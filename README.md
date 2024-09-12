@@ -91,7 +91,7 @@ Using [the external trigger](https://www.alfredapp.com/help/workflows/triggers/e
 
 **Examples:**
 * `openModeRecord,superwhisper://mode?key=custom-HWEE` 
-* `openMode,superwhisper://mode?key=custom-HWEE,Dicate in English` 
+* `openMode,superwhisper://mode?key=custom-HWEE,Dictate in English` 
 * `activateSuperM`
 
 <details>
