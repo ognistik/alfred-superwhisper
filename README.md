@@ -56,7 +56,7 @@ Controlling this workflow is straightforward, but there are some things to consi
 
 * All available Hotkeys have notes to indicate their function.
 
-* Both the main menu and modes menu have additional options with modifiers, make sure to read and familiarize yourself with these to make the most of the workflow.
+* Both the main menu and modes menu have additional options with modifiers. Make sure to read and familiarize yourself with these to make the most of the workflow.
 
 * Hotkeys have been color-coded as follows:
   * Blue: Quick access to the workflow menus and its main options.
