@@ -1,5 +1,5 @@
 <h1 align="center">SuperWhisper for Alfred</h1>
-<p align="center"><strong>Use Alfred to Control [SuperWhisper](https://superwhisper.com/) - AI Powered Voice to Text</strong></p>
+<p align="center"><strong>Use Alfred to Control <a href="https://superwhisper.com/">SuperWhisper</a> - AI Powered Voice to Text</strong></p>
 <p align="center">
     <img width="300" src="Workflow/assets/superwhisper.png">
 </p>
@@ -8,22 +8,33 @@
 This Alfred workflow is designed to enhance your experience with [SuperWhisper](https://superwhisper.com/), an INCREDIBLE AI-powered text tool that offers dictation/transcription capabilities and access to both local and cloud language models. Please note that this workflow is not official and serves as an alternative for controlling SuperWhisper efficiently.
 
 ---
-## Main Features
-- Quickly open SuperWhisper's settings.
-- Change recording modes with ease.
-- Start or stop recording directly from within Alfred.
-- Activate and start recording in a specific mode instantly.
-- Customizable hotkeys to activate and record in user-defined modes.
-- Conveniently access your SuperWhisper history panel.
-- Use Alfred’s textview to open your last result from SuperWhisper, or to see a parsed version of the last JSON file (convenient for debugging).
-- Set two favorite modes and quickly start recording on them from the main menu (or with custom hotkeys/external trigger).
-- While on the main menu, press CMD C on any option to copy the last SuperWhisper result to your clipboard, or press CMD Y to have a ‘quick-look’ of your JSON file.
-- Fully control the workflow using Alfred's bar, keyboard shortcuts, or an external trigger.
-- Supports fuzzy search and filtering. This allows you to—for example—filter ‘Super Mode’ by simply typing ‘sm’ while in the modes menu.
 
 <p align="center">
-  <img width="600" src="Workflow/assets/001.png">
+  <img width="800" src="Workflow/assets/001.png">
 </p>
+
+## MAIN FEATURES
+- Quickly **open SuperWhisper's settings**.
+
+- **Change recording modes** with ease.
+
+- **Start or stop recording** directly from within Alfred.
+
+- **Activate and start recording** in a specific mode instantly.
+
+- **Customizable hotkeys** to activate and record in user-defined modes.
+
+- Conveniently **access SuperWhisper's history** panel.
+
+- Use Alfred’s textview to o**pen your last result from SuperWhisper**, or to **see a parsed version of the last JSON file** (convenient for debugging).
+
+- **Set two favorite modes and quickly start recording** on them from the main menu (or with custom hotkeys/external trigger).
+
+- While on the main menu, **press CMD C on any option to copy the last SuperWhisper result to your clipboard**, or press CMD Y to have a ‘quick-look’ of your JSON file.
+
+- Fully control the workflow using **Alfred's bar, keyboard shortcuts, or an external trigger.**
+
+- **Supports fuzzy search and filtering.** This allows you to—for example—filter ‘Super Mode’ by simply typing ‘sm’ while in the modes menu.
 
 ---
 ## REQUIREMENTS
@@ -35,6 +46,11 @@ This Alfred workflow is designed to enhance your experience with [SuperWhisper](
 * In the configuration settings, there are two experimental options: "Super Mode" and "History." To access these, ensure SuperWhisper's menu icon is visible. Please be aware that this feature relies on AppleScript, and compatibility with system in languages other than English may vary.
 
 ---
+
+<p align="center">
+  <img width="800" src="Workflow/assets/002.png">
+</p>
+
 ## HOW TO
 Controlling this workflow is straightforward, but there are some things to consider:
 
@@ -47,12 +63,8 @@ Controlling this workflow is straightforward, but there are some things to consi
   * Yellow: Non-essential, but convenient for pro-users
   * Orange: They activate and record in specific modes.
 
-<p align="center">
-  <img width="600" src="Workflow/assets/002.png">
-</p>
-
 ---
-### “Custom Mode” Hotkeys
+### “CUSTOM MODE” HOTKEYS
 In addition to the two favorite modes and super mode hotkeys, users can set up six additional hotkeys. If you need more than six or require options—like activating a mode without triggering record—, consider using the external trigger. This prevents potential functionality loss with future workflow updates.
 
 **To set up your custom hotkeys you need to:**
@@ -63,7 +75,7 @@ In addition to the two favorite modes and super mode hotkeys, users can set up s
 5. Double click the hotkey block and choose your favorite keyboard shortcut :)
 
 ---
-### The External Trigger
+### THE EXTERNAL TRIGGER
 Using [the external trigger](https://www.alfredapp.com/help/workflows/triggers/external/) provides total control over this workflow's features, whether you're automating tasks, maximizing functionality, or seeking additional custom hotkeys. You can utilize the external trigger through either Alfred's AppleScript or URL scheme. 
 
 > This workflow’s external trigger is `sw` .
