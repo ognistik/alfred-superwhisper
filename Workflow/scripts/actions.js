@@ -54,15 +54,17 @@ function run(argv) {
                     // Convert datetime
                     let formattedDatetime = 'N/A';
                     if (jsonContent.datetime) {
-                        const datetimeObj = new Date(jsonContent.datetime);
+                        const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                        const datetimeObj = new Date(jsonContent.datetime + 'Z'); // Append 'Z' to treat as UTC
                         if (!isNaN(datetimeObj.getTime())) {
-                            formattedDatetime = datetimeObj.getFullYear() + '-' + 
-                                                String(datetimeObj.getMonth() + 1).padStart(2, '0') + '-' +
-                                                String(datetimeObj.getDate()).padStart(2, '0') + ' • ' +
-                                                String(datetimeObj.getHours() % 12 || 12).padStart(2, '0') + ':' +
-                                                String(datetimeObj.getMinutes()).padStart(2, '0') + ':' +
-                                                String(datetimeObj.getSeconds()).padStart(2, '0') + ' ' +
-                                                (datetimeObj.getHours() >= 12 ? 'PM' : 'AM');
+                            const localDatetime = new Date(datetimeObj.toLocaleString("en-US", {timeZone: userTimezone}));
+                            formattedDatetime = localDatetime.getFullYear() + '-' + 
+                                                String(localDatetime.getMonth() + 1).padStart(2, '0') + '-' +
+                                                String(localDatetime.getDate()).padStart(2, '0') + ' • ' +
+                                                String(localDatetime.getHours() % 12 || 12).padStart(2, '0') + ':' +
+                                                String(localDatetime.getMinutes()).padStart(2, '0') + ':' +
+                                                String(localDatetime.getSeconds()).padStart(2, '0') + ' ' +
+                                                (localDatetime.getHours() >= 12 ? 'PM' : 'AM');
                         }
                     }
                     
@@ -71,12 +73,26 @@ function run(argv) {
                     const simpleResult = jsonContent.result || '';
                     
                     // Create formatted string of all objects except 'segments' and 'datetime'
+                    const desiredOrder = ['prompt', 'rawResult', 'result', 'llmResult'];
+
                     let formattedString = '';
-                    for (const [key, value] of Object.entries(jsonContent)) {
-                        if (key !== 'segments' && key !== 'datetime' && key !== 'segments' && key !== 'appVersion') {
+                    const entries = Object.entries(jsonContent);
+
+                    // First, add the keys in the desired order
+                    for (const key of desiredOrder) {
+                        if (key in jsonContent) {
+                            const value = jsonContent[key];
                             formattedString += `## ${key}\n${value !== undefined && value !== null ? value : 'N/A'}\n---\n`;
                         }
                     }
+
+                    // Then, add the remaining keys in alphabetical order
+                    entries
+                        .filter(([key]) => !desiredOrder.includes(key) && key !== 'segments' && key !== 'datetime' && key !== 'appVersion')
+                        .sort(([a], [b]) => a.localeCompare(b))
+                        .forEach(([key, value]) => {
+                            formattedString += `## ${key}\n${value !== undefined && value !== null ? value : 'N/A'}\n---\n`;
+                        });
                     
                     return {
                         latestJson: metaJsonPath,

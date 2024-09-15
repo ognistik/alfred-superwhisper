@@ -137,15 +137,17 @@ function run(argv) {
                     // Convert datetime
                     let formattedDatetime = 'N/A';
                     if (jsonContent.datetime) {
-                        const datetimeObj = new Date(jsonContent.datetime);
+                        const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                        const datetimeObj = new Date(jsonContent.datetime + 'Z'); // Append 'Z' to treat as UTC
                         if (!isNaN(datetimeObj.getTime())) {
-                            formattedDatetime = datetimeObj.getFullYear() + '-' + 
-                                                String(datetimeObj.getMonth() + 1).padStart(2, '0') + '-' +
-                                                String(datetimeObj.getDate()).padStart(2, '0') + ' • ' +
-                                                String(datetimeObj.getHours() % 12 || 12).padStart(2, '0') + ':' +
-                                                String(datetimeObj.getMinutes()).padStart(2, '0') + ':' +
-                                                String(datetimeObj.getSeconds()).padStart(2, '0') + ' ' +
-                                                (datetimeObj.getHours() >= 12 ? 'PM' : 'AM');
+                            const localDatetime = new Date(datetimeObj.toLocaleString("en-US", {timeZone: userTimezone}));
+                            formattedDatetime = localDatetime.getFullYear() + '-' + 
+                                                String(localDatetime.getMonth() + 1).padStart(2, '0') + '-' +
+                                                String(localDatetime.getDate()).padStart(2, '0') + ' • ' +
+                                                String(localDatetime.getHours() % 12 || 12).padStart(2, '0') + ':' +
+                                                String(localDatetime.getMinutes()).padStart(2, '0') + ':' +
+                                                String(localDatetime.getSeconds()).padStart(2, '0') + ' ' +
+                                                (localDatetime.getHours() >= 12 ? 'PM' : 'AM');
                         }
                     }
                     
@@ -156,7 +158,7 @@ function run(argv) {
                     // Create formatted string of all objects except 'segments' and 'datetime'
                     let formattedString = '';
                     for (const [key, value] of Object.entries(jsonContent)) {
-                        if (key !== 'segments' && key !== 'datetime' && key !== 'segments' && key !== 'appVersion') {
+                        if (key !== 'segments' && key !== 'datetime' && key !== 'appVersion') {
                             formattedString += `## ${key}\n${value !== undefined && value !== null ? value : 'N/A'}\n---\n`;
                         }
                     }
@@ -300,7 +302,7 @@ function run(argv) {
                 autocomplete: mode.name,
                 title: mode.name,
                 autocomplete: mode.name,
-                subtitle: `↩ Activate • ⌘↩ Activate and Record • ⌘C Copy DeepLink`,
+                subtitle: `↩ Activate • ⌘↩ Activate and Record • ⌘C Copy Deep Link`,
                 text: {
                     'copy': `superwhisper://mode?key=${encodeURIComponent(mode.key)}`,
                 },

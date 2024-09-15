@@ -520,16 +520,6 @@
 				<key>vitoclose</key>
 				<false/>
 			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>33C185A4-E04F-4A41-8824-59E6F37767A9</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
 		</array>
 		<key>958C0ADA-294A-405F-87EF-C86ECCF95F72</key>
 		<array>
@@ -557,6 +547,8 @@
 				<false/>
 			</dict>
 		</array>
+		<key>9594F430-1D7F-4E11-902E-02C7ED06B68E</key>
+		<array/>
 		<key>97956B19-9719-4719-BA8A-D86C9F3487CD</key>
 		<array>
 			<dict>
@@ -622,6 +614,8 @@
 				<false/>
 			</dict>
 		</array>
+		<key>A1A59578-583B-477C-BA51-558AC1AE8211</key>
+		<array/>
 		<key>A3C3CCB5-0128-4A60-9228-6AA1B88B009C</key>
 		<array>
 			<dict>
@@ -631,6 +625,21 @@
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>ABFFE8D4-E61E-4FCC-9928-DBF2E821CAB8</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>A1A59578-583B-477C-BA51-558AC1AE8211</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>EA08C073-D19B-4105-B0F6-C6F462BB4F0E</string>
 				<key>vitoclose</key>
 				<false/>
 			</dict>
@@ -705,6 +714,16 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>074E906C-271D-4891-943A-CCAECE5A2557</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>33C185A4-E04F-4A41-8824-59E6F37767A9</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -988,6 +1007,16 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
+				<string>ABFFE8D4-E61E-4FCC-9928-DBF2E821CAB8</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
 				<string>B6A29B65-2D4E-4225-97B8-A1A1E9B79456</string>
 				<key>modifiers</key>
 				<integer>0</integer>
@@ -1024,6 +1053,29 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>tell application "Keyboard Maestro Engine" to do script "Get SW Mode"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>6</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>A1A59578-583B-477C-BA51-558AC1AE8211</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>availableviaurlhandler</key>
 				<false/>
 				<key>triggerid</key>
@@ -1033,6 +1085,38 @@
 			<string>alfred.workflow.trigger.external</string>
 			<key>uid</key>
 			<string>4F29702A-4F1C-45B6-AD18-BCA803E4AEFC</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>conditions</key>
+				<array>
+					<dict>
+						<key>inputstring</key>
+						<string>{var:kmMode}</string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>5</integer>
+						<key>matchstring</key>
+						<string></string>
+						<key>outputlabel</key>
+						<string></string>
+						<key>uid</key>
+						<string>EA08C073-D19B-4105-B0F6-C6F462BB4F0E</string>
+					</dict>
+				</array>
+				<key>elselabel</key>
+				<string>else</string>
+				<key>hideelse</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.conditional</string>
+			<key>uid</key>
+			<string>ABFFE8D4-E61E-4FCC-9928-DBF2E821CAB8</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -1625,7 +1709,7 @@ export session_var=$((RANDOM % 9000000 + 1))
 				<key>variables</key>
 				<dict>
 					<key>noti</key>
-					<string>The mode "{var:modeName}" has been activated.</string>
+					<string>"{var:modeName}" has been activated.</string>
 				</dict>
 			</dict>
 			<key>type</key>
@@ -3051,7 +3135,7 @@ Please be aware that since this workflow is non-official, it may require occasio
 		<key>074E906C-271D-4891-943A-CCAECE5A2557</key>
 		<dict>
 			<key>xpos</key>
-			<real>1060</real>
+			<real>1075</real>
 			<key>ypos</key>
 			<real>145</real>
 		</dict>
@@ -3158,16 +3242,16 @@ Please be aware that since this workflow is non-official, it may require occasio
 			<key>note</key>
 			<string>OneUpdater</string>
 			<key>xpos</key>
-			<real>1715</real>
+			<real>1450</real>
 			<key>ypos</key>
-			<real>315</real>
+			<real>310</real>
 		</dict>
 		<key>33C185A4-E04F-4A41-8824-59E6F37767A9</key>
 		<dict>
 			<key>xpos</key>
-			<real>1620</real>
+			<real>1075</real>
 			<key>ypos</key>
-			<real>345</real>
+			<real>340</real>
 		</dict>
 		<key>48ED3F5F-1A16-4AA3-B1E4-0B93562E017F</key>
 		<dict>
@@ -3429,6 +3513,13 @@ Please be aware that since this workflow is non-official, it may require occasio
 			<key>ypos</key>
 			<real>1375</real>
 		</dict>
+		<key>A1A59578-583B-477C-BA51-558AC1AE8211</key>
+		<dict>
+			<key>xpos</key>
+			<real>2110</real>
+			<key>ypos</key>
+			<real>35</real>
+		</dict>
 		<key>A3C3CCB5-0128-4A60-9228-6AA1B88B009C</key>
 		<dict>
 			<key>colorindex</key>
@@ -3437,6 +3528,13 @@ Please be aware that since this workflow is non-official, it may require occasio
 			<real>865</real>
 			<key>ypos</key>
 			<real>295</real>
+		</dict>
+		<key>ABFFE8D4-E61E-4FCC-9928-DBF2E821CAB8</key>
+		<dict>
+			<key>xpos</key>
+			<real>1990</real>
+			<key>ypos</key>
+			<real>65</real>
 		</dict>
 		<key>AF91928F-282D-431F-8F9C-70F2891E4767</key>
 		<dict>
@@ -3853,9 +3951,26 @@ Please be aware that since this workflow is non-official, it may require occasio
 			<key>variable</key>
 			<string>showSM</string>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<false/>
+				<key>required</key>
+				<false/>
+				<key>text</key>
+				<string>Mode in Menu Bar</string>
+			</dict>
+			<key>description</key>
+			<string>IMPORTANT: This feature requires an extra Keyboard Maestro macro. It displays your current mode in the menu bar, updating whenever you change modes with this workflow. See documentation for macro download.</string>
+			<key>label</key>
+			<string></string>
+			<key>type</key>
+			<string>checkbox</string>
+			<key>variable</key>
+			<string>kmMode</string>
+		</dict>
 	</array>
-	<key>variablesdontexport</key>
-	<array/>
 	<key>version</key>
 	<string>1.0.0</string>
 	<key>webaddress</key>
