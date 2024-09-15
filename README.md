@@ -38,6 +38,10 @@ This Alfred workflow is designed to enhance your experience with [SuperWhisper](
 
 - If you have [Keyboard Maestro](https://www.keyboardmaestro.com/), a macro can be triggered by the workflow to always display your current mode on your MenuBar.
 
+<p align="center">
+  <img width="800" src="Workflow/assets/003.jpg">
+</p>
+
 ---
 ## REQUIREMENTS
 
