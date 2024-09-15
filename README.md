@@ -36,6 +36,8 @@ This Alfred workflow is designed to enhance your experience with [SuperWhisper](
 
 - **Supports fuzzy search and filtering.** This allows you to—for example—filter ‘Super Mode’ by simply typing ‘sm’ while in the modes menu.
 
+- If you have [Keyboard Maestro](https://www.keyboardmaestro.com/), a macro can be triggered by the workflow to always display your current mode on your MenuBar.
+
 ---
 ## REQUIREMENTS
 
@@ -43,7 +45,9 @@ This Alfred workflow is designed to enhance your experience with [SuperWhisper](
   
 * This workflow utilizes Python 3 to filter its menus. If you don't have it, it may prompt you to install Xcode Command Line Tools for this, or you can install it by running `xcode-select --install` in Terminal. Python is a widely used programming language recognized for its safety and reliability, commonly utilized in Alfred workflows, [Homebrew](https://brew.sh/), and more.
   
-* In the configuration settings, there are two experimental options: "Super Mode" and "History." To access these, ensure SuperWhisper's menu icon is visible. Please be aware that this feature relies on AppleScript, and compatibility with system in languages other than English may vary.
+* In the configuration settings, there are three experimental options: "Super Mode" and "History." To access these, ensure SuperWhisper's menu icon is visible. Please be aware that this feature relies on AppleScript, and compatibility with system in languages other than English may vary.
+
+* The third experimental option, "Show Mode in Menu Bar," requires importing [this Keyboard Maestro macro group](https://raw.github.com/ognistik/alfred-superwhisper/tree/main/Workflow/assets/MenuBar.kmmacros.zip) to KM. There is one empty macro in the group which you may delete (it's necessary to allow export as a group). If you don't have Keyboard Maestro installed, avoid activating this option to prevent potential errors.
 
 ---
 

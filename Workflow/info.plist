@@ -1058,7 +1058,7 @@
 				<key>escaping</key>
 				<integer>68</integer>
 				<key>script</key>
-				<string>tell application "Keyboard Maestro Engine" to do script "Get SW Mode"</string>
+				<string>tell application "Keyboard Maestro Engine" to do script "SW Mode"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -3943,7 +3943,7 @@ Please be aware that since this workflow is non-official, it may require occasio
 				<string>Super Mode</string>
 			</dict>
 			<key>description</key>
-			<string>If 'History' and 'Activate Super Mode' are not working properly, make sure SuperWhisper is visible in your menubar.</string>
+			<string>If 'History' and 'Activate Super Mode' are not working properly, make sure SuperWhisper is visible in your menubar. Super Mode also has to be activated in SuperWhisper's configuration.</string>
 			<key>label</key>
 			<string></string>
 			<key>type</key>
@@ -3959,10 +3959,10 @@ Please be aware that since this workflow is non-official, it may require occasio
 				<key>required</key>
 				<false/>
 				<key>text</key>
-				<string>Mode in Menu Bar</string>
+				<string>Show Mode in Menu Bar</string>
 			</dict>
 			<key>description</key>
-			<string>IMPORTANT: This feature requires an extra Keyboard Maestro macro. It displays your current mode in the menu bar, updating whenever you change modes with this workflow. See documentation for macro download.</string>
+			<string>IMPORTANT: This feature requires an extra Keyboard Maestro macro. See the documentation for instructions.</string>
 			<key>label</key>
 			<string></string>
 			<key>type</key>
