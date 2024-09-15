@@ -3977,8 +3977,10 @@ Please be aware that since this workflow is non-official, it may require occasio
 			<string>kmMode</string>
 		</dict>
 	</array>
+	<key>variablesdontexport</key>
+	<array/>
 	<key>version</key>
-	<string>1.0.0</string>
+	<string>1.0.1</string>
 	<key>webaddress</key>
 	<string>https://github.com/ognistik/alfred-superwhisper</string>
 </dict>
