@@ -26,7 +26,7 @@ This Alfred workflow is designed to enhance your experience with [SuperWhisper](
 
 - Conveniently **access SuperWhisper's history** panel.
 
-- Use Alfred’s textview to o**pen your last result from SuperWhisper**, or to **see a parsed version of the last JSON file** (convenient for debugging).
+- Use Alfred’s text view to **open your last result from SuperWhisper**, or to **see a parsed version of the last JSON file** (convenient for debugging).
 
 - **Set two favorite modes and quickly start recording** on them from the main menu (or with custom hotkeys/external trigger).
 
@@ -116,9 +116,9 @@ Using [the external trigger](https://www.alfredapp.com/help/workflows/triggers/e
 | `activateRecordFavA` | Activates and records on favorite mode “A”                   |
 | `activateRecordFavB` | Activates and records on favorite mode “B”                   |
 | `history`            | Opens history tab in SuperWhisper                            |
-| `viewLastResult`     | Opens the last result in Alfred’s TextView. It will try to get the LLM Result. If no LLM was used, it will get the transcribed dictation. |
+| `viewLastResult`     | Opens the last result in Alfred’s Text View. It will try to get the LLM Result. If no LLM was used, it will get the transcribed dictation. |
 | `copyLast`           | Copies the last result to your clipboard.                    |
-| `viewLastJSON`       | Opens a parsed version of the last JSON file in Alfred’s TextView. |
+| `viewLastJSON`       | Opens a parsed version of the last JSON file in Alfred’s Text View. |
 | `revealJson`         | Reveals the last JSON file in Finder.                        |
 
 </details>

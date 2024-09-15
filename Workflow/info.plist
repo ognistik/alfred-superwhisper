@@ -3063,7 +3063,7 @@ This Alfred workflow is designed to enhance your experience with [SuperWhisper](
 
 - Conveniently **access SuperWhisper's history** panel.
 
-- Use Alfred's textview to o**pen your last result from SuperWhisper**, or to **see a parsed version of the last JSON file** (convenient for debugging).
+- Use Alfred's text view to **open your last result from SuperWhisper**, or to **see a parsed version of the last JSON file** (convenient for debugging).
 
 - **Set two favorite modes and quickly start recording** on them from the main menu (or with custom hotkeys/external trigger).
 
