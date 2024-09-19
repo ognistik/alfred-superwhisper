@@ -71,6 +71,8 @@ Controlling this workflow is straightforward, but there are some things to consi
   * Yellow: Non-essential, but convenient for pro-users
   * Orange: They activate and record in specific modes.
 
+* There's three green color-coded snippets which allow you to quickly past either your last dictated prompt, the result, or both at the same time.
+
 ---
 ### “CUSTOM MODE” HOTKEYS
 In addition to the two favorite modes and super mode hotkeys, users can set up six additional hotkeys. If you need more than six or require options—like activating a mode without triggering record—, consider using the external trigger. This prevents potential functionality loss with future workflow updates.

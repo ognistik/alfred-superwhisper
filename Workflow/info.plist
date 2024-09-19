@@ -3663,6 +3663,8 @@ Controlling this workflow is straightforward, but there are some things to consi
   * Yellow: Non-essential, but convenient for pro-users
   * Orange: They activate and record in specific modes.
 
+* There's three green color-coded snippets which allow you to quickly paste either your last dictated prompt, the result, or both at the same time.
+
 ---
 ### "CUSTOM MODE" HOTKEYS
 In addition to the two favorite modes and super mode hotkeys, users can set up six additional hotkeys. If you need more than six or require options—like activating a mode without triggering record—, consider using [the external trigger](https://github.com/ognistik/alfred-superwhisper#the-external-trigger). This prevents potential functionality loss with future workflow updates.
@@ -3763,6 +3765,8 @@ Please be aware that since this workflow is non-official, it may require occasio
 		</dict>
 		<key>215B2B5F-DA2A-41F8-A659-7C3A6FDA7A1A</key>
 		<dict>
+			<key>colorindex</key>
+			<integer>5</integer>
 			<key>note</key>
 			<string>Past Result</string>
 			<key>xpos</key>
@@ -3889,6 +3893,8 @@ Please be aware that since this workflow is non-official, it may require occasio
 		</dict>
 		<key>573285F3-8E13-421D-A1A7-6065F88EF127</key>
 		<dict>
+			<key>colorindex</key>
+			<integer>5</integer>
 			<key>note</key>
 			<string>Paste Prompt (Dictated)</string>
 			<key>xpos</key>
@@ -4179,6 +4185,8 @@ Please be aware that since this workflow is non-official, it may require occasio
 		</dict>
 		<key>AE8A422C-1EDA-47E8-823F-EBC455BD0765</key>
 		<dict>
+			<key>colorindex</key>
+			<integer>5</integer>
 			<key>note</key>
 			<string>Paste Chat (Prompt &amp; Result)</string>
 			<key>xpos</key>
@@ -4661,7 +4669,7 @@ Please be aware that since this workflow is non-official, it may require occasio
 				<string>Copy Selected Text</string>
 			</dict>
 			<key>description</key>
-			<string>If text is selected when triggering record using the Workflow, copy it (to use as context for your request). "Use copied text" option must be selected in SuperWhisper. This feature depends on accessibility and may not work in all apps.</string>
+			<string>If text is selected when triggering record using the Workflow, copy it (to use as context for your request). Useful if you have some modes with "use copied text" activated. This feature depends on accessibility and may not work in all apps.</string>
 			<key>label</key>
 			<string></string>
 			<key>type</key>
@@ -4670,8 +4678,10 @@ Please be aware that since this workflow is non-official, it may require occasio
 			<string>copySelect</string>
 		</dict>
 	</array>
+	<key>variablesdontexport</key>
+	<array/>
 	<key>version</key>
-	<string>1.0.1</string>
+	<string>1.0.2</string>
 	<key>webaddress</key>
 	<string>https://github.com/ognistik/alfred-superwhisper</string>
 </dict>
