@@ -71,7 +71,7 @@ Controlling this workflow is straightforward, but there are some things to consi
   * Yellow: Non-essential, but convenient for pro-users
   * Orange: They activate and record in specific modes.
 
-* There's three green color-coded snippets which allow you to quickly past either your last dictated prompt, the result, or both at the same time.
+* There's three green color-coded snippets which allow you to quickly paste either your last dictated prompt, the result, or both at the same time.
 
 ---
 ### “CUSTOM MODE” HOTKEYS
