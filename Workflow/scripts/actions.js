@@ -68,7 +68,7 @@ function run(argv) {
                         }
                     }
                     
-                    // Extract llmResult
+                    // Extract Values
                     const llmResult = jsonContent.llmResult || '';
                     const simpleResult = jsonContent.result || '';
                     
@@ -378,6 +378,27 @@ function run(argv) {
                     variables: {
                         theAction: 'reveal',
                         theUrl: result.latestJson
+                    }
+                }
+            });
+        }
+    } else if (theAction.startsWith('paste')) {
+        const result = processLatestMetaJson();
+        if (result.notFound === 1) {
+            return JSON.stringify({
+                alfredworkflow: {
+                    variables: {
+                        theAction: '',
+                        noti: 'JSON file not found.'
+                    }
+                }
+            });
+        } else {
+            return JSON.stringify({
+                alfredworkflow: {
+                    variables: {
+                        prompt: result.result,
+                        result: result.llmResult
                     }
                 }
             });

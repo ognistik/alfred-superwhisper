@@ -130,6 +130,10 @@ class Fuzzy(object):
             dict: ``fb`` with items sorted/removed.
         """
 #       fold = isascii(query)
+        # The following two lines were added to keep alfred sorting without anything typed it
+        if not query:
+            return fb
+
         items = []
 
         for it in fb['items']:
@@ -143,6 +147,7 @@ class Fuzzy(object):
 
             items.append((score, it))
 
+        # Commenting this out is supposed to leave Alfred's sorting as usual... doesn't...
         items.sort(key=lambda i: i[0], reverse=True)
         fb['items'] = [it for _, it in items]
         return fb

@@ -49,9 +49,9 @@ This Alfred workflow is designed to enhance your experience with [SuperWhisper](
   
 * This workflow utilizes Python 3 to filter its menus. If you don't have it, it may prompt you to install Xcode Command Line Tools for this, or you can install it by running `xcode-select --install` in Terminal. Python is a widely used programming language recognized for its safety and reliability, commonly utilized in Alfred workflows, [Homebrew](https://brew.sh/), and more.
   
-* In the configuration settings, there are three experimental options: "Super Mode", "History," and "Show Mode in Menu Bar." To access these, ensure SuperWhisper's menu icon is visible. Please be aware that this feature relies on AppleScript, and compatibility with system in languages other than English may vary.
+* In the configuration settings, there are some experimental options. For "Super Mode", "History," and "Show Mode in Menu Bar", ensure SuperWhisper's menu icon is visible. Please be aware that these options rely on AppleScript, and compatibility with system in languages other than English may vary.
 
-* The third experimental option, "Show Mode in Menu Bar," requires importing [this Keyboard Maestro macro group](https://github.com/ognistik/alfred-superwhisper/blob/main/Workflow/assets/MenuBar.kmmacros.zip?raw=true) into KM. The group contains one empty macro, which you can delete (it's necessary for exporting as a group). To keep the mode updated on your menu bar, make sure you only switch modes using this workflow. If you don't have Keyboard Maestro installed, avoid activating this option to prevent potential errors.
+* "Show Mode in Menu Bar," requires importing [this Keyboard Maestro macro group](https://github.com/ognistik/alfred-superwhisper/blob/main/Workflow/assets/MenuBar.kmmacros.zip?raw=true) into KM. The group contains one empty macro, which you can delete (it's necessary for exporting as a group). To keep the mode updated on your menu bar, make sure you only switch modes using this workflow. If you don't have Keyboard Maestro installed, avoid activating this option to prevent potential errors.
 
 ---
 
