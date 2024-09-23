@@ -24,38 +24,16 @@ func requestAccessibilityPermission() {
 func checkTextSelectionAndCopyToClipboard() -> Bool {
     NSLog("Starting text selection check")
     
-    let systemWideElement = AXUIElementCreateSystemWide()
-    NSLog("Created system-wide element")
-    
-    var focusedApp: AXUIElement?
-    var value: CFTypeRef?
-    let focusedAppResult = AXUIElementCopyAttributeValue(systemWideElement, kAXFocusedApplicationAttribute as CFString, &value)
-    
-    NSLog("Focused app result: \(focusedAppResult.rawValue)")
-    
-    if focusedAppResult == .success {
-        focusedApp = (value as! AXUIElement)
-        NSLog("Successfully got focused app")
-    } else {
-        NSLog("Failed to get focused app. Error code: \(focusedAppResult.rawValue)")
-        NSLog("Attempting to get frontmost application")
-        
-        if let frontmostApp = NSWorkspace.shared.frontmostApplication {
-            NSLog("Got frontmost application")
-            focusedApp = AXUIElementCreateApplication(frontmostApp.processIdentifier)
-        } else {
-            NSLog("Failed to get frontmost application")
-            return false
-        }
-    }
-    
-    guard let app = focusedApp else {
-        NSLog("No focused app available")
+    guard let frontmostApp = NSWorkspace.shared.frontmostApplication else {
+        NSLog("Failed to get frontmost application")
         return false
     }
     
+    NSLog("Got frontmost application: \(frontmostApp.localizedName ?? "Unknown")")
+    let app = AXUIElementCreateApplication(frontmostApp.processIdentifier)
+    
     var focusedElement: AXUIElement?
-    value = nil
+    var value: CFTypeRef?
     let focusedElementResult = AXUIElementCopyAttributeValue(app, kAXFocusedUIElementAttribute as CFString, &value)
     
     NSLog("Focused element result: \(focusedElementResult.rawValue)")
@@ -72,12 +50,18 @@ func checkTextSelectionAndCopyToClipboard() -> Bool {
         return false
     }
     
+    // Try to get selected text
     value = nil
-    let selectedTextResult = AXUIElementCopyAttributeValue(element, kAXSelectedTextAttribute as CFString, &value)
+    var selectedTextResult = AXUIElementCopyAttributeValue(element, kAXSelectedTextAttribute as CFString, &value)
     
-    NSLog("Selected text result: \(selectedTextResult.rawValue)")
+    // If getting selected text fails, try to get the value attribute
+    if selectedTextResult != .success {
+        selectedTextResult = AXUIElementCopyAttributeValue(element, kAXValueAttribute as CFString, &value)
+    }
     
-    if selectedTextResult == .success, let text = value as? String {
+    NSLog("Selected text/value result: \(selectedTextResult.rawValue)")
+    
+    if selectedTextResult == .success, let text = value as? String, !text.isEmpty {
         NSLog("Selected text: \(text)")
         
         // Copy the selected text to clipboard
@@ -86,7 +70,7 @@ func checkTextSelectionAndCopyToClipboard() -> Bool {
         pasteboard.setString(text, forType: .string)
         NSLog("Copied selected text to clipboard")
         
-        return !text.isEmpty
+        return true
     } else {
         NSLog("Failed to get selected text or text is empty. Error code: \(selectedTextResult.rawValue)")
     }
@@ -97,10 +81,8 @@ func checkTextSelectionAndCopyToClipboard() -> Bool {
 NSLog("Application started")
 requestAccessibilityPermission()
 if checkTextSelectionAndCopyToClipboard() {
-    // print("true")
     NSLog("Text is selected and copied to clipboard")
 } else {
-    // print("false")
-    NSLog("No text selected")
+    NSLog("No text selected or failed to copy")
 }
 NSLog("Application finished")

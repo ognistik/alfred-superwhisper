@@ -1252,7 +1252,18 @@
 			</dict>
 		</array>
 		<key>F9CEBF41-562E-46F4-AEA1-A593491D5781</key>
-		<array/>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>7F3E0687-377F-4B3A-9809-8D2D281D5936</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 	</dict>
 	<key>createdby</key>
 	<string>Robert J. P. Oberg</string>
@@ -1264,6 +1275,23 @@
 	<string>SuperWhisper</string>
 	<key>objects</key>
 	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>'{query}'</string>
+				<key>cleardebuggertext</key>
+				<false/>
+				<key>processoutputs</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.debug</string>
+			<key>uid</key>
+			<string>7F3E0687-377F-4B3A-9809-8D2D281D5936</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -4065,6 +4093,13 @@ Please be aware that since this workflow is non-official, it may require occasio
 			<real>3500</real>
 			<key>ypos</key>
 			<real>325</real>
+		</dict>
+		<key>7F3E0687-377F-4B3A-9809-8D2D281D5936</key>
+		<dict>
+			<key>xpos</key>
+			<real>3705</real>
+			<key>ypos</key>
+			<real>115</real>
 		</dict>
 		<key>899F2990-96D7-4EA1-857B-68DCD9959445</key>
 		<dict>
