@@ -135,6 +135,8 @@ function run(argv) {
         return JSON.stringify({
             alfredworkflow: {
                 variables: {
+                    theAction: 'openMode',
+                    theUrl: '',
                     noti: 'Super Mode has been activated.'
                 }
             }

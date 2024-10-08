@@ -397,6 +397,8 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>5B1F3685-CB4F-4D2A-8B29-A097C72F7876</string>
+				<key>disabled</key>
+				<true/>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -644,6 +646,18 @@
 		</array>
 		<key>8A7E20C5-4863-46C0-AC7C-4CFE7FAE8750</key>
 		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>40ACFA94-D70D-468C-A82C-25737380988E</string>
+				<key>disabled</key>
+				<true/>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
 			<dict>
 				<key>destinationuid</key>
 				<string>CA907A35-F66A-4912-9E40-7E3F265701EE</string>
@@ -1383,6 +1397,11 @@ xattr -d com.apple.quarantine ./copySelect &gt;/dev/null 2&gt;&amp;1
 				<key>hideelse</key>
 				<true/>
 			</dict>
+			<key>inboundconfig</key>
+			<dict>
+				<key>externalid</key>
+				<string>copySelect</string>
+			</dict>
 			<key>type</key>
 			<string>alfred.workflow.utility.conditional</string>
 			<key>uid</key>
@@ -1584,6 +1603,23 @@ xattr -d com.apple.quarantine ./copySelect &gt;/dev/null 2&gt;&amp;1
 			<string>9594F430-1D7F-4E11-902E-02C7ED06B68E</string>
 			<key>version</key>
 			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>'{query}', {variables}</string>
+				<key>cleardebuggertext</key>
+				<false/>
+				<key>processoutputs</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.debug</string>
+			<key>uid</key>
+			<string>40ACFA94-D70D-468C-A82C-25737380988E</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -3880,6 +3916,13 @@ Please be aware that since this workflow is non-official, it may require occasio
 			<key>ypos</key>
 			<real>495</real>
 		</dict>
+		<key>40ACFA94-D70D-468C-A82C-25737380988E</key>
+		<dict>
+			<key>xpos</key>
+			<real>1630</real>
+			<key>ypos</key>
+			<real>265</real>
+		</dict>
 		<key>48ED3F5F-1A16-4AA3-B1E4-0B93562E017F</key>
 		<dict>
 			<key>colorindex</key>
@@ -3944,9 +3987,9 @@ Please be aware that since this workflow is non-official, it may require occasio
 		<key>5B1F3685-CB4F-4D2A-8B29-A097C72F7876</key>
 		<dict>
 			<key>xpos</key>
-			<real>860</real>
+			<real>890</real>
 			<key>ypos</key>
-			<real>220</real>
+			<real>215</real>
 		</dict>
 		<key>62109E35-7440-4D9D-9AAA-4611EFDF8E60</key>
 		<dict>
@@ -4047,7 +4090,7 @@ Please be aware that since this workflow is non-official, it may require occasio
 		<key>76FFD076-7C3F-4F25-9D5D-2D54148FEE04</key>
 		<dict>
 			<key>xpos</key>
-			<real>3365</real>
+			<real>3385</real>
 			<key>ypos</key>
 			<real>180</real>
 		</dict>

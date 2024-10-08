@@ -276,20 +276,23 @@ function run(argv) {
                     'copy': result.notFound === 1 ? '' : (result.llmResult !== '' ? result.llmResult : (result.result !== '' ? result.result : '')),
                 },
                 quicklookurl: result.notFound === 1 ? '' : result.latestJson,
-                ...(result.notFound !== 1  && result.result !== '' && {
+                ...(result.notFound !== 1  && {
                 mods: {
-                    cmd: {
-                        subtitle: 'View last result',
-                        variables: {
-                            theAction: 'viewLastResult',
-                        }
+                    alt: {
+                        subtitle: 'View last JSON contents',
+                            variables: {
+                                theAction: 'viewLastJSON',
+                            }
                     },
-                alt: {
-                    subtitle: 'View last JSON contents',
-                        variables: {
-                            theAction: 'viewLastJSON',
+                    ...(result.result !== '' && {
+                        cmd: {
+                            subtitle: 'View last result',
+                            variables: {
+                                theAction: 'viewLastResult',
+                            }
                         }
-                }}
+                    })
+                }
                 })
             });
         }
