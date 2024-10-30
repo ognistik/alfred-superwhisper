@@ -3,6 +3,7 @@
 <p align="center">
     <img width="300" src="Workflow/assets/superwhisper.png">
 </p>
+<p align="center"><em><a href="https://youtu.be/mUcijTpWYAQ">~ Video Overview & Setup ~</a></em></p>
 
 ## ABOUT
 This Alfred workflow is designed to enhance your experience with [SuperWhisper](https://superwhisper.com/), an INCREDIBLE AI-powered text tool that offers dictation/transcription capabilities and access to both local and cloud language models. Please note that this workflow is not official and serves as an alternative for controlling SuperWhisper efficiently.
