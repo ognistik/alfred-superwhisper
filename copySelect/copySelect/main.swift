@@ -80,9 +80,12 @@ func checkTextSelectionAndCopyToClipboard() -> Bool {
 
 NSLog("Application started")
 requestAccessibilityPermission()
+
 if checkTextSelectionAndCopyToClipboard() {
+    print("true")
     NSLog("Text is selected and copied to clipboard")
 } else {
+    print("false")
     NSLog("No text selected or failed to copy")
 }
 NSLog("Application finished")

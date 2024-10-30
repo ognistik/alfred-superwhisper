@@ -3,15 +3,18 @@ ObjC.import('Foundation');
 
 function run(argv) {
     var query = argv[0];
-    var swPath = $.getenv('swPath');
-    var showSM = $.getenv('showSM');
-    var favModeA = $.getenv('favModeA');
-    var favModeAName = $.getenv('favModeAName');
-    var favModeB = $.getenv('favModeB');
-    var favModeBName = $.getenv('favModeBName');
+    const swPath = $.getenv('swPath');
+    const showSM = $.getenv('showSM');
+    const showHistory = $.getenv('showHistory');
+    const favModeA = $.getenv('favModeA');
+    const favModeAName = $.getenv('favModeAName');
+    const favModeB = $.getenv('favModeB');
+    const favModeBName = $.getenv('favModeBName');
     const modesDir = swPath + '/modes';
     const recDir = swPath + '/recordings';
-
+    const hisNumber = $.getenv('hisNumber');
+    const fileManager = $.NSFileManager.defaultManager;
+    
     //This allows the same input to be reused
     try {
         theAction = $.getenv('theAction');
@@ -42,7 +45,6 @@ function run(argv) {
     }
 
     function getModes() {
-        const fileManager = $.NSFileManager.defaultManager;
         const modes = [];
     
         if (!fileManager.fileExistsAtPath(modesDir)) {
@@ -94,7 +96,6 @@ function run(argv) {
     }
 
     function processLatestMetaJson() {
-        const fileManager = $.NSFileManager.defaultManager;
         const error = $();
         
         // Get contents of the recDir
@@ -180,18 +181,113 @@ function run(argv) {
         return { notFound: 1 };
     }
 
-    const result = processLatestMetaJson();
+    function processMetaJsonFiles(mode = 'default') {
+        const error = $();
+        const results = [];
+        
+        // Get contents of the recDir
+        const contents = fileManager.contentsOfDirectoryAtPathError($(recDir), error);
+        
+        if (error.code) {
+            return [];
+        }
+        
+        // Sort contents to get the latest folders
+        const sortedContents = ObjC.unwrap(contents).sort((a, b) => {
+            return ObjC.unwrap(b).localeCompare(ObjC.unwrap(a));
+        });
+    
+        if (sortedContents.length === 0) {
+            return [];
+        }
+    
+        // If hisNumber is 0, check all folders, otherwise check specified number
+        const foldersToCheck = hisNumber === '0' ? 
+            sortedContents.length : 
+            Math.min(Number(hisNumber), sortedContents.length);
+    
+        for (let i = 0; i < foldersToCheck; i++) {
+            const folder = ObjC.unwrap(sortedContents[i]);
+            const metaJsonPath = recDir + '/' + folder + '/meta.json';
+    
+            if (fileManager.fileExistsAtPath($(metaJsonPath))) {
+                let fileContent;
+                try {
+                    fileContent = $.NSString.stringWithContentsOfFileEncodingError($(metaJsonPath), $.NSUTF8StringEncoding, $());
+                    if (!fileContent) continue;
+                } catch (readError) {
+                    continue;
+                }
+                
+                try {
+                    const jsonContent = JSON.parse(fileContent.js);
+                    const llmResult = jsonContent.llmResult || '';
+                    const simpleResult = jsonContent.result || '';
+                    
+                    // Skip if both results are empty
+                    if (!llmResult && !simpleResult) continue;
+    
+                    // Format datetime
+                    let formattedDate = '';
+                    if (jsonContent.datetime) {
+                        const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                        const datetimeObj = new Date(jsonContent.datetime + 'Z');
+                        if (!isNaN(datetimeObj.getTime())) {
+                            const localDatetime = new Date(datetimeObj.toLocaleString("en-US", {timeZone: userTimezone}));
+                            formattedDate = `${String(localDatetime.getMonth() + 1).padStart(2, '0')}/${String(localDatetime.getDate()).padStart(2, '0')} ${String(localDatetime.getHours() % 12 || 12).padStart(2, '0')}:${String(localDatetime.getMinutes()).padStart(2, '0')} ${localDatetime.getHours() >= 12 ? 'PM' : 'AM'} • `;
+                        }
+                    }
+                    
+                    // Build subtitle based on available content
+                    let subtitle = formattedDate;
+                    if (mode === 'voice') {
+                        subtitle += '↩ View voice • ';
+                        if (llmResult) {
+                            subtitle += '⌘↩ View AI • ⌥↩ Copy voice & AI • ';
+                        }
+                        subtitle += '^↩ JSON';
+                    } else {
+                        if (llmResult) {
+                            subtitle += '↩ View AI • ⌘↩ View voice • ⌥↩ Copy voice & AI • ';
+                        } else {
+                            subtitle += '↩ View voice • ';
+                        }
+                        subtitle += '^↩ JSON';
+                    }
+                    
+                    results.push({
+                        title: mode === 'voice' ? simpleResult : (llmResult || simpleResult),
+                        subtitle: subtitle,
+                        jsonPath: metaJsonPath,
+                        llmResult: llmResult,
+                        result: simpleResult
+                    });
+                    
+                } catch (parseError) {
+                    continue;
+                }
+            }
+        }
+        
+        return results;
+    }
+    
     var items = [];
 
     if (theAction === '') {
+        const result = processLatestMetaJson();
         items.push({
             uid: 'settings',
             type: 'default',
             title: 'Settings',
             autocomplete: 'Settings',
+            arg: result.latestJson,
             subtitle: '↩ Open SuperWhisper settings • ⌘↩ Open workflow settings',
             text: {
                     'copy': result.notFound === 1 ? '' : (result.llmResult !== '' ? result.llmResult : (result.result !== '' ? result.result : '')),
+                    'largetype': result.notFound === 1 ? '' : ((result.llmResult || result.result).length > 1300 
+                ? (result.llmResult || result.result).substring(0, 1300) + '...' 
+                : (result.llmResult || result.result))
                 },
             variables: { theAction: 'settings' },
             mods: {
@@ -208,9 +304,13 @@ function run(argv) {
             type: 'default',
             title: 'Modes',
             autocomplete: 'Modes',
+            arg: result.latestJson,
             subtitle: '↩ Choose Mode • ⌘↩ Reveal in Finder',
             text: {
                 'copy': result.notFound === 1 ? '' : (result.llmResult !== '' ? result.llmResult : (result.result !== '' ? result.result : '')),
+                'largetype': result.notFound === 1 ? '' : ((result.llmResult || result.result).length > 1300 
+            ? (result.llmResult || result.result).substring(0, 1300) + '...' 
+            : (result.llmResult || result.result))
             },
             variables: { theAction: 'selectMode' },
             quicklookurl: result.notFound === 1 ? '' : result.latestJson,
@@ -228,9 +328,13 @@ function run(argv) {
             type: 'default',
             title: 'Toggle Recording',
             autocomplete: 'Toggle Recording',
-            subtitle: '↩ Toggle Recording' + (favModeA !== '' ? ' • ⌘↩ Record in "' + favModeAName + '"': '') + (favModeB !== '' ? ' • ⌥↩ Record in "' + favModeBName + '"': ''),
+            arg: result.latestJson,
+            subtitle: '↩ Toggle recording' + (favModeA !== '' ? ' • ⌘↩ Record in "' + favModeAName + '"': '') + (favModeB !== '' ? ' • ⌥↩ Record in "' + favModeBName + '"': ''),
             text: {
                 'copy': result.notFound === 1 ? '' : (result.llmResult !== '' ? result.llmResult : (result.result !== '' ? result.result : '')),
+                'largetype': result.notFound === 1 ? '' : ((result.llmResult || result.result).length > 1300 
+            ? (result.llmResult || result.result).substring(0, 1300) + '...' 
+            : (result.llmResult || result.result))
             },
             variables: { theAction: 'record' },
             quicklookurl: result.notFound === 1 ? '' : result.latestJson,
@@ -264,36 +368,50 @@ function run(argv) {
            })
         });
 
-        if ($.getenv('showHistory') === '1') {
+        if (result.notFound !== 1) {
             items.push({
                 uid: 'history',
                 type: 'default',
                 title: 'History',
+                arg: result.latestJson,
                 autocomplete: 'History',
-                subtitle: result.notFound === 1 ? 'View recording history' : '↩ View recording history ' + (result.llmResult !== '' ? '• ⌘↩ View last result ' : (result.result !== '' ? '• ⌘↩ View last result ' : '')) + '• ⌥↩ View last JSON contents',
-                variables: { theAction: 'history' },
+                subtitle: `↩ Filter by result • ⌘↩ Filter by voice • ⌥↩ Last result • ⌃↩ Last JSON ${showHistory === '1' ? '• ⇧↩ History in SW' : ''}`,
+                variables: { theAction: 'selectHistoryResult' },
                 text: {
                     'copy': result.notFound === 1 ? '' : (result.llmResult !== '' ? result.llmResult : (result.result !== '' ? result.result : '')),
+                    'largetype': result.notFound === 1 ? '' : ((result.llmResult || result.result).length > 1300 
+                ? (result.llmResult || result.result).substring(0, 1300) + '...' 
+                : (result.llmResult || result.result))
                 },
-                quicklookurl: result.notFound === 1 ? '' : result.latestJson,
-                ...(result.notFound !== 1  && {
+                quicklookurl: result.latestJson,
                 mods: {
-                    alt: {
-                        subtitle: 'View last JSON contents',
-                            variables: {
-                                theAction: 'viewLastJSON',
-                            }
+                    cmd: {
+                        subtitle: 'Filter by voice',
+                        variables: {
+                            theAction: 'selectHistoryVoice',
+                        }
                     },
-                    ...(result.result !== '' && {
-                        cmd: {
-                            subtitle: 'View last result',
+                    ctrl: {
+                        subtitle: 'View last JSON contents',
+                        variables: {
+                            theAction: 'viewLastJSON',
+                        }
+                    },
+                    alt: {
+                        subtitle: 'View last result',
+                        variables: {
+                            theAction: 'viewLastResult',
+                        }
+                    },
+                    ...(showHistory === '1' ? {
+                        shift: {
+                            subtitle: 'View history in SW',
                             variables: {
-                                theAction: 'viewLastResult',
+                                theAction: 'history'
                             }
                         }
-                    })
+                    } : {})
                 }
-                })
             });
         }
     } else if (theAction === 'selectMode') {
@@ -301,24 +419,26 @@ function run(argv) {
         if (newModes.length > 0) {
             items.push(...newModes.map(mode => ({
                 uid: mode.key,
-                type: 'default',
+                type: 'file',
                 autocomplete: mode.name,
                 title: mode.name,
                 autocomplete: mode.name,
-                subtitle: `↩ Activate • ⌘↩ Activate and Record • ⌘C Copy Deep Link`,
+                subtitle: `↩ Activate • ⌘↩ Activate and record • ⌘C Copy deep link`,
                 text: {
                     'copy': `superwhisper://mode?key=${encodeURIComponent(mode.key)}`,
                 },
+                arg: mode.filePath,
                 quicklookurl: mode.filePath,
                 variables: { theAction: 'openMode', theUrl: `superwhisper://mode?key=${encodeURIComponent(mode.key)}`, modeName: mode.name },
                 mods: {
                     cmd: {
-                        subtitle: 'Activate and Record',
+                        subtitle: 'Activate and record',
                         variables: {
                             theAction: 'openModeRecord',
                             theUrl: `superwhisper://mode?key=${encodeURIComponent(mode.key)}`
                         }
-                    }}
+                    }
+                }
             })));
         }
         if (showSM === '1'){
@@ -343,13 +463,122 @@ function run(argv) {
         }
         if (items.length === 0) {
             items.push({
-                uid: 'noModes',
                 valid: false,
                 type: 'default',
                 title: `No Modes Found`,
                 arg: ''
             });
         }
+    } else if (theAction === 'selectHistoryResult') {
+        const historyItems = processMetaJsonFiles('default');
+        historyItems.forEach(item => {
+            items.push({
+                type: 'file',
+                title: item.title,
+                autocomplete: item.title,
+                subtitle: item.subtitle,
+                arg: item.jsonPath,
+                variables: { theAction: 'viewResult', theUrl: item.jsonPath },
+                text: {
+                    'copy': item.llmResult || item.result,
+                    'largetype': (item.llmResult || item.result).length > 1300 
+                    ? (item.llmResult || item.result).substring(0, 1300) + '...' 
+                    : (item.llmResult || item.result)
+                },
+                quicklookurl: item.jsonPath,
+                mods: {
+                    cmd: {
+                        subtitle: 'View voice',
+                        variables: {
+                            theAction: 'viewVoice',
+                            theUrl: item.jsonPath
+                        }
+                    },
+                    ctrl: {
+                        subtitle: 'View JSON',
+                        variables: {
+                            theAction: 'viewJSON',
+                            theUrl: item.jsonPath
+                        }
+                    },
+                    'cmd + alt': {
+                        subtitle: 'Copy system, voice & AI',
+                        variables: {
+                            theAction: 'copyLongChat',
+                            theUrl: item.jsonPath
+                        }
+                    },
+                    ...(item.llmResult !== '' ? {
+                        alt: {
+                            subtitle: 'Copy voice & AI',
+                            variables: {
+                                theAction: 'copyChat',
+                                theUrl: item.jsonPath
+                            }
+                        }
+                    } : {})
+                }
+            });
+        });
+        if (historyItems.length === 0) {
+            items.push({
+                type: 'default',
+                title: 'No History Items Found',
+                arg: '',
+                valid: false
+            });
+        }
+    } else if (theAction === 'selectHistoryVoice') {
+        const historyItems = processMetaJsonFiles('voice');
+        historyItems.forEach(item => {
+            items.push({
+                type: 'file',
+                title: item.title,
+                autocomplete: item.title,
+                subtitle: item.subtitle,
+                arg: item.jsonPath,
+                variables: { theAction: 'viewVoice', theUrl: item.jsonPath },
+                text: {
+                    'copy': item.result,
+                    'largetype': item.result.length > 1300 
+                    ? item.result.substring(0, 1300) + '...' 
+                    : item.result
+                },
+                quicklookurl: item.jsonPath,
+                mods: {
+                    cmd: {
+                        subtitle: 'View AI',
+                        variables: {
+                            theAction: 'viewResult',
+                            theUrl: item.jsonPath
+                        }
+                    },
+                    ctrl: {
+                        subtitle: 'View JSON',
+                        variables: {
+                            theAction: 'viewJSON',
+                            theUrl: item.jsonPath
+                        }
+                    },
+                    'cmd + alt': {
+                        subtitle: 'Copy system, voice & AI',
+                        variables: {
+                            theAction: 'copyLongChat',
+                            theUrl: item.jsonPath
+                        }
+                    },
+                    ...(item.llmResult !== '' ? {
+                        alt: {
+                            subtitle: 'Copy voice & AI',
+                            variables: {
+                                theAction: 'copyChat',
+                                theUrl: item.jsonPath
+                            }
+                        }
+                    } : {})
+                }
+            });
+        });
     }
 
     return JSON.stringify({ items: items });
