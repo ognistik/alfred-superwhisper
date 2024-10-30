@@ -6301,7 +6301,7 @@ Please be aware that since this workflow is non-official, it may require occasio
 				<string>Super Mode</string>
 			</dict>
 			<key>description</key>
-			<string>If 'History' and 'Activate Super Mode' are not working properly, make sure SuperWhisper is visible in your menubar. Super Mode also has to be activated in SuperWhisper's configuration.</string>
+			<string>If 'History Panel' and 'Super Mode' are not working properly, make sure SuperWhisper is visible in your menubar. Super Mode also has to be activated in SuperWhisper's configuration.</string>
 			<key>label</key>
 			<string></string>
 			<key>type</key>
@@ -6348,8 +6348,10 @@ Please be aware that since this workflow is non-official, it may require occasio
 			<string>kmMode</string>
 		</dict>
 	</array>
+	<key>variablesdontexport</key>
+	<array/>
 	<key>version</key>
-	<string>1.0.2</string>
+	<string>1.1.0</string>
 	<key>webaddress</key>
 	<string>https://github.com/ognistik/alfred-superwhisper</string>
 </dict>
