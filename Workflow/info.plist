@@ -2790,6 +2790,8 @@ export session_var=$((RANDOM % 9000000 + 1))
 				<integer>1</integer>
 				<key>scriptfile</key>
 				<string></string>
+				<key>skipuniversalaction</key>
+				<true/>
 				<key>subtext</key>
 				<string>AI Powered Voice to Text</string>
 				<key>title</key>
