@@ -160,6 +160,8 @@ This is an experimental macro group which adds extra features to an already vers
 3. Make sure you have activated the "KM Macro Group" option in Alfred's workflow configuration.
 4. The Recording Window toggle performs the switch directly on SuperWhisper's preferences. It is suggested you backup this file in case of any errors: "~/Library/Preferences/com.superduper.superwhisper.plist".
 
+*NOTE: If you notice that your result is being pasted to your front app once you setup the macros, but the recording window doesn't close, go back to SuperWhisper's settings and toggle off and on the "Recording window enabled" setting. In a similar way toggle on and off the "Close recording window automatically" & "Paste result text." This should make those settings register well in th preferences file.*
+
 **Why turn off auto-paste and auto-close:**
 - Action modes will handle closing the recording window (if there's one) and pasting.
 - Voice commands will also close the recording window IF the setting is ON.
