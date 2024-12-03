@@ -128,6 +128,7 @@ Using [the external trigger](https://www.alfredapp.com/help/workflows/triggers/e
 | `viewLastResult`     | Opens the last result in Alfred’s Text View. It will try to get the LLM Result. If no LLM was used, it will get the transcribed dictation. |
 | `editLastResult`     | Opens a temporary edit view with the last result.            |
 | `copyLast`           | Copies the last result to your clipboard.                    |
+| `processLast`        | Reprocess the most recent audio file.                        |
 | `viewLastJSON`       | Opens a parsed version of the last JSON file in Alfred’s Text View. |
 | `revealJson`         | Reveals the last JSON file in Finder.                        |
 

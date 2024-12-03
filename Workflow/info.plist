@@ -107,6 +107,31 @@
 				<false/>
 			</dict>
 		</array>
+		<key>0A5772B0-D99B-41D8-AE72-3FC68E812286</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>A25C4753-1EBB-468A-8E23-D903A41BBB62</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>EA08C073-D19B-4105-B0F6-C6F462BB4F0E</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>F9CEBF41-562E-46F4-AEA1-A593491D5781</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>0B88AAD9-A534-46F5-B91D-912A39C9C29C</key>
 		<array>
 			<dict>
@@ -159,6 +184,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>130800C5-4084-4CF6-8FEB-51CB0E6179BF</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>F7963D3D-7686-4BFE-B504-A47B556E0949</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>14F78835-FF8D-41A3-8622-76B6E6E37BB0</key>
 		<array>
 			<dict>
@@ -199,7 +237,18 @@
 			</dict>
 		</array>
 		<key>193E14B8-BCC0-42B2-9BF1-B77DF81F73E8</key>
-		<array/>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>9EF25778-4978-46EA-8269-A3C5EFFCB9F3</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>2061798E-A2AF-40C7-B5D6-6EA44765FE47</key>
 		<array>
 			<dict>
@@ -324,6 +373,19 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>6BE242C7-820B-4244-80CA-5359F19BF9BE</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>2BCA419F-DFEA-4B1E-A4E7-0B48D253E4BF</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>F6D2343F-F1D9-4E37-A2BD-C1915EEB6E30</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -497,6 +559,19 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>A3C3CCB5-0128-4A60-9228-6AA1B88B009C</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>5B28DF87-6E2B-4E55-928C-8FE4FC79F1A8</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>0A5772B0-D99B-41D8-AE72-3FC68E812286</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -818,7 +893,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>F9CEBF41-562E-46F4-AEA1-A593491D5781</string>
+				<string>F04BC166-5102-45A6-97E0-4A66D63DC09F</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -1094,6 +1169,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>9EF25778-4978-46EA-8269-A3C5EFFCB9F3</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>E53AAD8A-61EF-493C-8AE1-D52FE0C5C02F</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>9FF7EBF7-E30F-4AED-A3C4-A50EE34EC156</key>
 		<array>
 			<dict>
@@ -1127,6 +1215,19 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>6BE242C7-820B-4244-80CA-5359F19BF9BE</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>A5861F75-BD75-4D0D-AD0B-90AC3292B83F</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>193E14B8-BCC0-42B2-9BF1-B77DF81F73E8</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -1296,7 +1397,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>193E14B8-BCC0-42B2-9BF1-B77DF81F73E8</string>
+				<string>A5861F75-BD75-4D0D-AD0B-90AC3292B83F</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -1713,6 +1814,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>EBF35FA5-5635-4C7D-A86C-1A39CD8A4B7B</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>2BCA419F-DFEA-4B1E-A4E7-0B48D253E4BF</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>EC396EE7-88F3-4A96-9107-7667E2E2A7BF</key>
 		<array>
 			<dict>
@@ -1751,6 +1865,19 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>B6A29B65-2D4E-4225-97B8-A1A1E9B79456</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>F04BC166-5102-45A6-97E0-4A66D63DC09F</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>5B28DF87-6E2B-4E55-928C-8FE4FC79F1A8</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -1800,6 +1927,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>F7963D3D-7686-4BFE-B504-A47B556E0949</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>958CFBFF-D808-486D-AA53-336AE882D574</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>F9CEBF41-562E-46F4-AEA1-A593491D5781</key>
 		<array>
 			<dict>
@@ -1840,6 +1980,195 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>argument</key>
+				<string></string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict>
+					<key>copySelectResult</key>
+					<string>{query}</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>A25C4753-1EBB-468A-8E23-D903A41BBB62</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>acceptsmulti</key>
+				<integer>0</integer>
+				<key>filetypes</key>
+				<array>
+					<string>com.apple.m4a-audio</string>
+					<string>com.microsoft.waveform-audio</string>
+					<string>com.newkline.avrx.m4a</string>
+					<string>com.newkline.avrx.mp3</string>
+					<string>com.newkline.avrx.wav</string>
+					<string>io.iina.mpeg3-audio</string>
+					<string>io.iina.mpeg4-audio</string>
+					<string>io.iina.wav</string>
+					<string>public.mp3</string>
+					<string>public.wav</string>
+				</array>
+				<key>name</key>
+				<string>Transcribe with SuperWhisper</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.action</string>
+			<key>uid</key>
+			<string>EBF35FA5-5635-4C7D-A86C-1A39CD8A4B7B</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>conditions</key>
+				<array>
+					<dict>
+						<key>inputstring</key>
+						<string>{query}</string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>5</integer>
+						<key>matchstring</key>
+						<string></string>
+						<key>outputlabel</key>
+						<string>Copied from Browser</string>
+						<key>uid</key>
+						<string>EA08C073-D19B-4105-B0F6-C6F462BB4F0E</string>
+					</dict>
+				</array>
+				<key>elselabel</key>
+				<string>else</string>
+				<key>hideelse</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.conditional</string>
+			<key>uid</key>
+			<string>0A5772B0-D99B-41D8-AE72-3FC68E812286</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.transform</string>
+			<key>uid</key>
+			<string>5B28DF87-6E2B-4E55-928C-8FE4FC79F1A8</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>set myKMVar to "sw_copySelect" 
+
+tell application "Keyboard Maestro Engine"
+	setvariable myKMVar to ""
+    	do script "SW Menu Bar" with parameter "getCopySelect"
+end tell</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>6</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>E53AAD8A-61EF-493C-8AE1-D52FE0C5C02F</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string></string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict>
+					<key>theAction</key>
+					<string>processItem</string>
+					<key>theUrl</key>
+					<string>{query}</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>2BCA419F-DFEA-4B1E-A4E7-0B48D253E4BF</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>set frontAppName to (name of (info for (path to frontmost application)))
+set selectedText to ""
+
+if frontAppName contains "Arc" then
+    tell application "Arc"
+        set selectedText to execute active tab of front window javascript "window.getSelection().toString()"
+        if selectedText is not "" and selectedText is not "\"\"" then
+            set selectedText to text 2 through -2 of selectedText
+        else
+            set selectedText to ""
+        end if
+    end tell
+else if frontAppName contains "Safari" then
+    tell application "Safari"
+        set selectedText to do JavaScript "window.getSelection().toString()" in front document
+    end tell
+end if
+
+if selectedText is not "" then
+    set the clipboard to selectedText
+    return true
+else
+    return false
+end if</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>6</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>F04BC166-5102-45A6-97E0-4A66D63DC09F</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
@@ -1871,18 +2200,11 @@ xattr -d com.apple.quarantine ./copySelect &gt;/dev/null 2&gt;&amp;1
 				<key>escaping</key>
 				<integer>68</integer>
 				<key>script</key>
-				<string>set myKMVar to "sw_copySelect"
-
-tell application "Keyboard Maestro Engine"
-    set currentValue to getvariable myKMVar
-end tell
+				<string>set myKMVar to "sw_copySelect" 
 
 tell application "Keyboard Maestro Engine"
 	setvariable myKMVar to "⌘ "
-	-- update with Menu macro will happen at the Action Trigger level
-	delay 8
-	setvariable myKMVar to ""
-    	do script "SW Menu Bar" with parameter "getCopySelect"
+	-- do script "SW Menu Bar" with parameter "getCopySelect"
 end tell</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
@@ -1933,22 +2255,25 @@ end tell</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argument</key>
-				<string></string>
-				<key>passthroughargument</key>
+				<key>concurrently</key>
 				<false/>
-				<key>variables</key>
-				<dict>
-					<key>copySelectResult</key>
-					<string>{query}</string>
-				</dict>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>tell application "Keyboard Maestro Engine" to do script "SW Menu Bar"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>6</integer>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.utility.argument</string>
+			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>A25C4753-1EBB-468A-8E23-D903A41BBB62</string>
+			<string>A1A59578-583B-477C-BA51-558AC1AE8211</string>
 			<key>version</key>
-			<integer>1</integer>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -1979,6 +2304,19 @@ end tell</string>
 			<string>alfred.workflow.utility.conditional</string>
 			<key>uid</key>
 			<string>482B41F3-76DF-494D-B1DC-4A6DBEA133CD</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>seconds</key>
+				<string>7</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.delay</string>
+			<key>uid</key>
+			<string>9EF25778-4978-46EA-8269-A3C5EFFCB9F3</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -2062,6 +2400,19 @@ end tell</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>seconds</key>
+				<string>.5</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.delay</string>
+			<key>uid</key>
+			<string>A5861F75-BD75-4D0D-AD0B-90AC3292B83F</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>argument</key>
 				<string></string>
 				<key>passthroughargument</key>
@@ -2104,29 +2455,6 @@ end tell</string>
 			<string>674B2535-9BCC-491E-B5F3-2297B4B13B7A</string>
 			<key>version</key>
 			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>68</integer>
-				<key>script</key>
-				<string>tell application "Keyboard Maestro Engine" to do script "SW Menu Bar"</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>6</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>A1A59578-583B-477C-BA51-558AC1AE8211</string>
-			<key>version</key>
-			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -4955,6 +5283,57 @@ fi</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>0</integer>
+				<key>hotmod</key>
+				<integer>0</integer>
+				<key>hotstring</key>
+				<string></string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>130800C5-4084-4CF6-8FEB-51CB0E6179BF</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string></string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict>
+					<key>theAction</key>
+					<string>processLast</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>F7963D3D-7686-4BFE-B504-A47B556E0949</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string># SUPERWHISPER FOR ALFRED
@@ -5110,6 +5489,13 @@ Please be aware that since this workflow is non-official, it may require occasio
 			<key>ypos</key>
 			<real>300</real>
 		</dict>
+		<key>0A5772B0-D99B-41D8-AE72-3FC68E812286</key>
+		<dict>
+			<key>xpos</key>
+			<real>4385</real>
+			<key>ypos</key>
+			<real>125</real>
+		</dict>
 		<key>0B88AAD9-A534-46F5-B91D-912A39C9C29C</key>
 		<dict>
 			<key>xpos</key>
@@ -5142,6 +5528,17 @@ Please be aware that since this workflow is non-official, it may require occasio
 			<key>ypos</key>
 			<real>1415</real>
 		</dict>
+		<key>130800C5-4084-4CF6-8FEB-51CB0E6179BF</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>3</integer>
+			<key>note</key>
+			<string>Reprocess Last Dictation</string>
+			<key>xpos</key>
+			<real>70</real>
+			<key>ypos</key>
+			<real>2455</real>
+		</dict>
 		<key>14F78835-FF8D-41A3-8622-76B6E6E37BB0</key>
 		<dict>
 			<key>xpos</key>
@@ -5170,7 +5567,7 @@ Please be aware that since this workflow is non-official, it may require occasio
 		<key>193E14B8-BCC0-42B2-9BF1-B77DF81F73E8</key>
 		<dict>
 			<key>xpos</key>
-			<real>4525</real>
+			<real>4930</real>
 			<key>ypos</key>
 			<real>155</real>
 		</dict>
@@ -5254,6 +5651,13 @@ Please be aware that since this workflow is non-official, it may require occasio
 			<key>ypos</key>
 			<real>735</real>
 		</dict>
+		<key>2BCA419F-DFEA-4B1E-A4E7-0B48D253E4BF</key>
+		<dict>
+			<key>xpos</key>
+			<real>615</real>
+			<key>ypos</key>
+			<real>155</real>
+		</dict>
 		<key>2D1579A8-90C2-47A5-8E13-D0085700367B</key>
 		<dict>
 			<key>colorindex</key>
@@ -5316,7 +5720,7 @@ Please be aware that since this workflow is non-official, it may require occasio
 		<key>482B41F3-76DF-494D-B1DC-4A6DBEA133CD</key>
 		<dict>
 			<key>xpos</key>
-			<real>4405</real>
+			<real>4760</real>
 			<key>ypos</key>
 			<real>185</real>
 		</dict>
@@ -5401,6 +5805,13 @@ Please be aware that since this workflow is non-official, it may require occasio
 			<real>890</real>
 			<key>ypos</key>
 			<real>215</real>
+		</dict>
+		<key>5B28DF87-6E2B-4E55-928C-8FE4FC79F1A8</key>
+		<dict>
+			<key>xpos</key>
+			<real>4315</real>
+			<key>ypos</key>
+			<real>135</real>
 		</dict>
 		<key>61336138-76A8-4E92-86BD-27EBF521FC58</key>
 		<dict>
@@ -5699,6 +6110,13 @@ Please be aware that since this workflow is non-official, it may require occasio
 			<key>ypos</key>
 			<real>575</real>
 		</dict>
+		<key>9EF25778-4978-46EA-8269-A3C5EFFCB9F3</key>
+		<dict>
+			<key>xpos</key>
+			<real>5065</real>
+			<key>ypos</key>
+			<real>185</real>
+		</dict>
 		<key>9FF7EBF7-E30F-4AED-A3C4-A50EE34EC156</key>
 		<dict>
 			<key>colorindex</key>
@@ -5715,16 +6133,16 @@ Please be aware that since this workflow is non-official, it may require occasio
 			<key>note</key>
 			<string>Update MenuBar Mode</string>
 			<key>xpos</key>
-			<real>3945</real>
+			<real>3940</real>
 			<key>ypos</key>
-			<real>210</real>
+			<real>185</real>
 		</dict>
 		<key>A25C4753-1EBB-468A-8E23-D903A41BBB62</key>
 		<dict>
 			<key>xpos</key>
-			<real>4345</real>
+			<real>4685</real>
 			<key>ypos</key>
-			<real>185</real>
+			<real>120</real>
 		</dict>
 		<key>A3C3CCB5-0128-4A60-9228-6AA1B88B009C</key>
 		<dict>
@@ -5734,6 +6152,13 @@ Please be aware that since this workflow is non-official, it may require occasio
 			<real>615</real>
 			<key>ypos</key>
 			<real>475</real>
+		</dict>
+		<key>A5861F75-BD75-4D0D-AD0B-90AC3292B83F</key>
+		<dict>
+			<key>xpos</key>
+			<real>4875</real>
+			<key>ypos</key>
+			<real>185</real>
 		</dict>
 		<key>ABFFE8D4-E61E-4FCC-9928-DBF2E821CAB8</key>
 		<dict>
@@ -5813,7 +6238,7 @@ Please be aware that since this workflow is non-official, it may require occasio
 		<key>C1C2F16A-213F-4FA9-99C1-25E7262C2F92</key>
 		<dict>
 			<key>xpos</key>
-			<real>4470</real>
+			<real>4815</real>
 			<key>ypos</key>
 			<real>185</real>
 		</dict>
@@ -5993,6 +6418,13 @@ Please be aware that since this workflow is non-official, it may require occasio
 			<key>ypos</key>
 			<real>2065</real>
 		</dict>
+		<key>E53AAD8A-61EF-493C-8AE1-D52FE0C5C02F</key>
+		<dict>
+			<key>xpos</key>
+			<real>5120</real>
+			<key>ypos</key>
+			<real>155</real>
+		</dict>
 		<key>E585FFE6-66F7-49B3-9749-CC60683DDA26</key>
 		<dict>
 			<key>xpos</key>
@@ -6014,6 +6446,13 @@ Please be aware that since this workflow is non-official, it may require occasio
 			<key>ypos</key>
 			<real>475</real>
 		</dict>
+		<key>EBF35FA5-5635-4C7D-A86C-1A39CD8A4B7B</key>
+		<dict>
+			<key>xpos</key>
+			<real>435</real>
+			<key>ypos</key>
+			<real>125</real>
+		</dict>
 		<key>EC396EE7-88F3-4A96-9107-7667E2E2A7BF</key>
 		<dict>
 			<key>xpos</key>
@@ -6029,6 +6468,13 @@ Please be aware that since this workflow is non-official, it may require occasio
 			<real>1815</real>
 			<key>ypos</key>
 			<real>295</real>
+		</dict>
+		<key>F04BC166-5102-45A6-97E0-4A66D63DC09F</key>
+		<dict>
+			<key>xpos</key>
+			<real>4170</real>
+			<key>ypos</key>
+			<real>155</real>
 		</dict>
 		<key>F65FB7B4-FE80-4EAE-BF9E-432BFE81BE93</key>
 		<dict>
@@ -6051,12 +6497,19 @@ Please be aware that since this workflow is non-official, it may require occasio
 			<key>ypos</key>
 			<real>560</real>
 		</dict>
+		<key>F7963D3D-7686-4BFE-B504-A47B556E0949</key>
+		<dict>
+			<key>xpos</key>
+			<real>215</real>
+			<key>ypos</key>
+			<real>2485</real>
+		</dict>
 		<key>F9CEBF41-562E-46F4-AEA1-A593491D5781</key>
 		<dict>
 			<key>note</key>
 			<string>Copy Selection on Record</string>
 			<key>xpos</key>
-			<real>4195</real>
+			<real>4530</real>
 			<key>ypos</key>
 			<real>155</real>
 		</dict>

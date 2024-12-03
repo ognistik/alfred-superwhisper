@@ -231,6 +231,39 @@ function run(argv) {
             }
         });
 
+    } else if (theAction === 'processLast') {
+        // Get file manager
+        const fileManager = $.NSFileManager.defaultManager;
+        const error = $();
+        
+        // Get contents of recordings directory
+        const contents = fileManager.contentsOfDirectoryAtPathError($(recDir), error);
+        
+        if (!error.code) {
+            // Sort contents to get latest folder
+            const sortedContents = ObjC.unwrap(contents).sort((a, b) => {
+                return ObjC.unwrap(b).localeCompare(ObjC.unwrap(a));
+            });
+
+            if (sortedContents.length > 0) {
+                // Get latest folder
+                const latestFolder = ObjC.unwrap(sortedContents[0]);
+                const wavPath = recDir + '/' + latestFolder + '/output.wav';
+                
+                // Check if output.wav exists
+                if (fileManager.fileExistsAtPath($(wavPath))) {
+                    // Open with SuperWhisper using AppleScript
+                    const app = Application.currentApplication();
+                    app.includeStandardAdditions = true;
+                    app.doShellScript(`open -a "superwhisper" "${wavPath}"`);
+                }
+            }
+        }
+    } else if (theAction === 'processItem') {
+        // Open with SuperWhisper using AppleScript
+        const app = Application.currentApplication();
+        app.includeStandardAdditions = true;
+        app.doShellScript(`open -a "superwhisper" "${theUrl}"`);
     } else if (theAction === 'activateRecordSuperM') {
         var appleScript = `
             tell application "System Events" to tell process "superwhisper"

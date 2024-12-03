@@ -209,6 +209,7 @@ function run(argv) {
         for (let i = 0; i < foldersToCheck; i++) {
             const folder = ObjC.unwrap(sortedContents[i]);
             const metaJsonPath = recDir + '/' + folder + '/meta.json';
+            const recPath = recDir + '/' + folder + '/output.wav';
     
             if (fileManager.fileExistsAtPath($(metaJsonPath))) {
                 let fileContent;
@@ -259,6 +260,7 @@ function run(argv) {
                         title: mode === 'voice' ? simpleResult : (llmResult || simpleResult),
                         subtitle: subtitle,
                         jsonPath: metaJsonPath,
+                        recPath: recPath,
                         llmResult: llmResult,
                         result: simpleResult
                     });
@@ -375,7 +377,7 @@ function run(argv) {
                 title: 'History',
                 arg: result.latestJson,
                 autocomplete: 'History',
-                subtitle: `↩ Filter by result • ⌘↩ Filter by voice • ⌥↩ Last result • ⌃↩ Last JSON ${showHistory === '1' ? '• ⇧↩ History in SW' : ''}`,
+                subtitle: `↩ By result • ⌘↩ By voice • ⌘⇧↩ Reprocess last • ⌥↩ Last result • ⌃↩ Last JSON ${showHistory === '1' ? '• ⇧↩ History in SW' : ''}`,
                 variables: { theAction: 'selectHistoryResult' },
                 text: {
                     'copy': result.notFound === 1 ? '' : (result.llmResult !== '' ? result.llmResult : (result.result !== '' ? result.result : '')),
@@ -401,6 +403,12 @@ function run(argv) {
                         subtitle: 'View last result',
                         variables: {
                             theAction: 'viewLastResult',
+                        }
+                    },
+                    'cmd+shift': {
+                        subtitle: 'Reprocess last dictation',
+                        variables: {
+                            theAction: 'processLast',
                         }
                     },
                     ...(showHistory === '1' ? {
@@ -494,6 +502,13 @@ function run(argv) {
                             theUrl: item.jsonPath
                         }
                     },
+                    'cmd+shift': {
+                        subtitle: 'Reprocess audio',
+                        variables: {
+                            theAction: 'processItem',
+                            theUrl: item.recPath
+                        }
+                    },
                     ctrl: {
                         subtitle: 'View JSON',
                         variables: {
@@ -558,6 +573,13 @@ function run(argv) {
                         variables: {
                             theAction: 'viewJSON',
                             theUrl: item.jsonPath
+                        }
+                    },
+                    'cmd+shift': {
+                        subtitle: 'Reprocess audio',
+                        variables: {
+                            theAction: 'processItem',
+                            theUrl: item.recPath
                         }
                     },
                     'cmd + alt': {
