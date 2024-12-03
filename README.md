@@ -48,6 +48,8 @@ This Alfred workflow is designed to enhance your experience with [SuperWhisper](
 
 * [SuperWhisper](https://superwhisper.com/) has to be running.
 
+* The "Copy Selected Text" option in the workflow's configuration will copy selected text from Arc & Safari using Javascript (which is more reliable than Accessibility). For this to work in Safari a few extra steps are necessary: Open Safari Settings, go to Advanced section, enable "Show Develop menu in menu bar", and in the Develop menu, select "Allow JavaScript from Apple Events".
+
 * Additional optional/experimental features require Keyboard Maestro macro group from the [LATEST RELEASE](https://github.com/ognistik/alfred-superwhisper/releases/latest). **[Make sure to read about its use.](#the-km-macros)** If you don't have Keyboard Maestro installed, avoid activating this option in the Workflow's configuration to prevent potential errors.
 
 ---
@@ -76,7 +78,7 @@ Controlling this workflow is straightforward, but there are some things to consi
   * Orange: They activate and record in specific modes.
   * Green: Snippets for pasting the last voice, result, both, or including system prompt.
 
-* The "copySelect" helper tool which is activated in the workflow configuration works like other SuperWhisper features that use your system's accessibility API. Depending on your front app, the accessibility features may or may not be fully supported or work as expected *(I'm talking about you, Arc)*. That's why I suggest using the Keyboard Maestro macros together with this config setting - as it will show you clearly if the tool successfully copied your selected text or not.
+* The "copySelect" helper tool which is activated in the workflow configuration works like other SuperWhisper features that use your system's accessibility API (with the exception of when using Arc or Safari, where it uses Javascript). Depending on your front app, the accessibility features may or may not be fully supported or work as expected. That's why I suggest using the Keyboard Maestro macros together with this config setting - as it will show you clearly if the tool successfully copied your selected text or not.
 
 ---
 ### “CUSTOM MODE” HOTKEYS

@@ -2311,7 +2311,7 @@ end tell</string>
 			<key>config</key>
 			<dict>
 				<key>seconds</key>
-				<string>7</string>
+				<string>5</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.utility.delay</string>
@@ -5343,7 +5343,7 @@ fi</string>
 
 ---
 
-**LATEST V1.1 IS A BIG UPDATE. [Check the video overview.](https://youtu.be/mUcijTpWYAQ)**
+**LATEST V1.1.1 Brings reprocessing of your last dictation directly from the main menu! Check the Github release notes 👆️**
 
 ---
 
@@ -5387,6 +5387,8 @@ This Alfred workflow is designed to enhance your experience with [SuperWhisper](
 ## REQUIREMENTS
 
 * [SuperWhisper](https://superwhisper.com/) has to be running.
+
+* The "Copy Selected Text" option in the workflow's configuration will copy selected text from Arc &amp; Safari using Javascript (which is more reliable than Accessibility). For this to work in Safari a few extra steps are necessary: Open Safari Settings, go to Advanced section, enable "Show Develop menu in menu bar", and in the Develop menu, select "Allow JavaScript from Apple Events".
 
 * Additional optional/experimental features require Keyboard Maestro macro group from the [LATEST RELEASE](https://github.com/ognistik/alfred-superwhisper/releases/latest). **[Make sure to read about its use.](https://github.com/ognistik/alfred-superwhisper#the-km-macros)** If you don't have Keyboard Maestro installed, avoid activating this option in the Workflow's configuration to prevent potential errors.
 
@@ -6806,7 +6808,7 @@ Please be aware that since this workflow is non-official, it may require occasio
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
-	<string>1.1.0</string>
+	<string>1.1.1</string>
 	<key>webaddress</key>
 	<string>https://github.com/ognistik/alfred-superwhisper</string>
 </dict>
