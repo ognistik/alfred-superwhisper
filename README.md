@@ -27,7 +27,9 @@ This Alfred workflow is designed to enhance your experience with [SuperWhisper](
 
 - Use Alfred’s text view to **check history items from SuperWhisper, to see a parsed version of their JSON file (convenient for debugging), or draft editing your results**.
 
-- **Filter your recording history by results or by voice.** Once filtered by result or by voice you can also filter by date (MM/dd).
+- **Filter your recording history by results or by voice.** Once filtered by result or by voice you can also filter by date (MM/dd). You can also reprocess any audio in history by pressing and holding CMD + SHIFT.
+
+- Quickly **reprocess your most recent dictation with your current mode**, by pressing CMD + SHIFT when selecting the "History" option in the main menu.
 
 - **Set two favorite modes and quickly start recording** on them from the main menu (or with custom hotkeys/external trigger).
 
@@ -202,7 +204,7 @@ In the end, you'll have the same auto-pasting and auto-closing features from Sup
 - Best used with modes that don't have LLM processing in SuperWhisper, or you'll wait for processing that won't be used.
 <details>
   <summary><b>👇️ Comes with the following commands:</b></summary>
-  
+
   - Ask Google
   - Ask Youtube
   - Ask Perplexity
