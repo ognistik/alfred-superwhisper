@@ -37,7 +37,7 @@ This Alfred workflow is designed to enhance your experience with [SuperWhisper](
 
 - Fully control the workflow using **Alfred's bar, keyboard shortcuts, or an external trigger.**
 
-- Alfred's actions for p**rocessing audio files with SuperWhisper** and for **clean rendering of SuperWhisper's JSON files with Alfred's Textview**.
+- Alfred's actions for **processing audio files with SuperWhisper** and for **clean rendering of SuperWhisper's JSON files with Alfred's Textview**.
 
 - **Supports fuzzy search and filtering.** This allows you to—for example—filter ‘Super Mode’ by simply typing ‘sm’ while in the modes menu.
 
