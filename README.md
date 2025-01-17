@@ -37,7 +37,7 @@ This Alfred workflow is designed to enhance your experience with [SuperWhisper](
 
 - **Supports fuzzy search and filtering.** This allows you to—for example—filter ‘Super Mode’ by simply typing ‘sm’ while in the modes menu.
 
-- **Optional 'copySelect helper'.** If recording is triggered by using the Workflow and the user has text selected, it will be copied to the clipboard. This is particularly useful for users that have modes with the 'use copied text' feature in SuperWhisper; if no text is selected when triggering the recording, nothing will happen.
+- **Optional 'copySelect helper'.** If recording is triggered by using the Workflow and the user has text selected on Arc or Safari, it will be copied to the clipboard. This is particularly useful for users that have modes with the 'use copied text' feature in SuperWhisper; if no text is selected when triggering the recording, or if user is not on one of those apps, nothing will happen.
 
 - If you have [Keyboard Maestro](https://www.keyboardmaestro.com/), a macro group allows the **display of your current mode on the Menu Bar. This also includes options for easily switching the SuperWisper recording window ON/OFF, using action modes, and setting up voice commands** (experimental).
 
@@ -48,7 +48,7 @@ This Alfred workflow is designed to enhance your experience with [SuperWhisper](
 
 * [SuperWhisper](https://superwhisper.com/) has to be running.
 
-* The "Copy Selected Text" option in the workflow's configuration will copy selected text from Arc & Safari using Javascript (which is more reliable than Accessibility). For this to work in Safari a few extra steps are necessary: Open Safari Settings, go to Advanced section, enable "Show Develop menu in menu bar", and in the Develop menu, select "Allow JavaScript from Apple Events".
+* The "Copy Selected Text" option in the workflow's configuration will copy selected text from Arc & Safari using Javascript (which is more reliable than Accessibility). For this to work in Safari a few extra steps are necessary: Open Safari Settings, go to Advanced section, enable "Show Develop menu in menu bar", and in the Develop menu, select "Allow JavaScript from Apple Events". This option just makes the native SW functionality more reliable, especially in these two browsers where accessibility seems to not always work.
 
 * Additional optional/experimental features require Keyboard Maestro macro group from the [LATEST RELEASE](https://github.com/ognistik/alfred-superwhisper/releases/latest). **[Make sure to read about its use.](#the-km-macros)** If you don't have Keyboard Maestro installed, avoid activating this option in the Workflow's configuration to prevent potential errors.
 
@@ -199,8 +199,19 @@ In the end, you'll have the same auto-pasting and auto-closing features from Sup
 
 ### Voice Commands
 - The "SW Action_Action" macro reads your transcription to spot command phrases and act on them.
-- Comes with five commands: "ask google," "ask youtube," "ask perplexity," "ask openai," and "ask claude." You may add more by customizing the macro.
 - Best used with modes that don't have LLM processing in SuperWhisper, or you'll wait for processing that won't be used.
+<details>
+  <summary><b>👇️ Comes with the following commands:</b></summary>
+  - Ask Google
+  - Ask Youtube
+  - Ask Perplexity
+  - Ask OpenAI
+  - Ask Claude
+  - Ask Rotten (Rotten Tomatoes)
+  - Ask Letterboxd
+
+  *You may add more commands by customizing the macro.*
+</details>
 
 ---
 ## CLOSING

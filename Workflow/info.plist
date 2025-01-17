@@ -124,6 +124,8 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>F9CEBF41-562E-46F4-AEA1-A593491D5781</string>
+				<key>disabled</key>
+				<true/>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -1945,6 +1947,8 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>A25C4753-1EBB-468A-8E23-D903A41BBB62</string>
+				<key>disabled</key>
+				<true/>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -2076,6 +2080,32 @@
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>#!/bin/bash
+
+xattr -d com.apple.quarantine ./copySelect &gt;/dev/null 2&gt;&amp;1
+./copySelect</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>F9CEBF41-562E-46F4-AEA1-A593491D5781</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
 				<integer>68</integer>
 				<key>script</key>
 				<string>set myKMVar to "sw_copySelect" 
@@ -2163,32 +2193,6 @@ end if</string>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
 			<string>F04BC166-5102-45A6-97E0-4A66D63DC09F</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>#!/bin/bash
-
-xattr -d com.apple.quarantine ./copySelect &gt;/dev/null 2&gt;&amp;1
-./copySelect</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>F9CEBF41-562E-46F4-AEA1-A593491D5781</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -5811,7 +5815,7 @@ Please be aware that since this workflow is non-official, it may require occasio
 		<key>5B28DF87-6E2B-4E55-928C-8FE4FC79F1A8</key>
 		<dict>
 			<key>xpos</key>
-			<real>4315</real>
+			<real>4320</real>
 			<key>ypos</key>
 			<real>135</real>
 		</dict>
@@ -6511,9 +6515,9 @@ Please be aware that since this workflow is non-official, it may require occasio
 			<key>note</key>
 			<string>Copy Selection on Record</string>
 			<key>xpos</key>
-			<real>4530</real>
+			<real>4540</real>
 			<key>ypos</key>
-			<real>155</real>
+			<real>150</real>
 		</dict>
 		<key>FA14CA77-2CCC-4F06-B222-2AC5EA556C7E</key>
 		<dict>
