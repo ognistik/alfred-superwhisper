@@ -173,6 +173,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>0FD58793-7E78-4C2A-89E9-0F8C347CA6F2</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>87A451E5-BD57-46B2-894C-08E7351C2643</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>10AB43F3-34FD-4951-85AA-8B789A0CB952</key>
 		<array>
 			<dict>
@@ -281,7 +294,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>63351C56-0B46-4F64-B262-1634CA030B9F</string>
+				<string>222A5D93-9B19-4A9C-A3D9-6FCCEA4EB0E1</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -295,6 +308,19 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>FCF7E4D8-FCEF-4CDE-AA03-B7BD575B05F8</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>222A5D93-9B19-4A9C-A3D9-6FCCEA4EB0E1</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>63351C56-0B46-4F64-B262-1634CA030B9F</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -1009,6 +1035,19 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>18E08D14-B188-4CCC-BF2E-1397AA13E2C7</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>87A451E5-BD57-46B2-894C-08E7351C2643</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>CA907A35-F66A-4912-9E40-7E3F265701EE</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -2147,6 +2186,48 @@ end tell</string>
 			<string>alfred.workflow.utility.argument</string>
 			<key>uid</key>
 			<string>2BCA419F-DFEA-4B1E-A4E7-0B48D253E4BF</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>/usr/bin/osascript scripts/viewJson.js $1</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>87A451E5-BD57-46B2-894C-08E7351C2643</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>acceptsmulti</key>
+				<integer>0</integer>
+				<key>filetypes</key>
+				<array>
+					<string>public.json</string>
+				</array>
+				<key>name</key>
+				<string>View SuperWhisper JSON</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.action</string>
+			<key>uid</key>
+			<string>0FD58793-7E78-4C2A-89E9-0F8C347CA6F2</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -3695,6 +3776,27 @@ export session_var=$((RANDOM % 9000000 + 1))
 			<string>2061798E-A2AF-40C7-B5D6-6EA44765FE47</string>
 			<key>version</key>
 			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>matchmode</key>
+				<integer>1</integer>
+				<key>matchstring</key>
+				<string>\n</string>
+				<key>regexcaseinsensitive</key>
+				<false/>
+				<key>regexmultiline</key>
+				<false/>
+				<key>replacestring</key>
+				<string>\n\n</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.replace</string>
+			<key>uid</key>
+			<string>222A5D93-9B19-4A9C-A3D9-6FCCEA4EB0E1</string>
+			<key>version</key>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -5525,6 +5627,13 @@ Please be aware that since this workflow is non-official, it may require occasio
 			<key>ypos</key>
 			<real>705</real>
 		</dict>
+		<key>0FD58793-7E78-4C2A-89E9-0F8C347CA6F2</key>
+		<dict>
+			<key>xpos</key>
+			<real>1185</real>
+			<key>ypos</key>
+			<real>155</real>
+		</dict>
 		<key>10AB43F3-34FD-4951-85AA-8B789A0CB952</key>
 		<dict>
 			<key>xpos</key>
@@ -5606,6 +5715,13 @@ Please be aware that since this workflow is non-official, it may require occasio
 			<real>4485</real>
 			<key>ypos</key>
 			<real>305</real>
+		</dict>
+		<key>222A5D93-9B19-4A9C-A3D9-6FCCEA4EB0E1</key>
+		<dict>
+			<key>xpos</key>
+			<real>2300</real>
+			<key>ypos</key>
+			<real>385</real>
 		</dict>
 		<key>245CAF52-3483-4AD5-9FFD-53049E5DEF23</key>
 		<dict>
@@ -5834,7 +5950,7 @@ Please be aware that since this workflow is non-official, it may require occasio
 		<key>63351C56-0B46-4F64-B262-1634CA030B9F</key>
 		<dict>
 			<key>xpos</key>
-			<real>2310</real>
+			<real>2350</real>
 			<key>ypos</key>
 			<real>355</real>
 		</dict>
@@ -6004,6 +6120,13 @@ Please be aware that since this workflow is non-official, it may require occasio
 			<real>4235</real>
 			<key>ypos</key>
 			<real>310</real>
+		</dict>
+		<key>87A451E5-BD57-46B2-894C-08E7351C2643</key>
+		<dict>
+			<key>xpos</key>
+			<real>1450</real>
+			<key>ypos</key>
+			<real>155</real>
 		</dict>
 		<key>88B4CC88-D89F-4C79-A59F-4E1F9F156B1B</key>
 		<dict>
@@ -6810,7 +6933,7 @@ Please be aware that since this workflow is non-official, it may require occasio
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
-	<string>1.1.2</string>
+	<string>1.1.3</string>
 	<key>webaddress</key>
 	<string>https://github.com/ognistik/alfred-superwhisper</string>
 </dict>

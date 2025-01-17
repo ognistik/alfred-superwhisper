@@ -77,7 +77,13 @@ function run(argv) {
                         .filter(([key]) => !desiredOrder.includes(key) && key !== 'segments' && key !== 'datetime' && key !== 'appVersion')
                         .sort(([a], [b]) => a.localeCompare(b))
                         .forEach(([key, value]) => {
-                            formattedString += `## ${key}\n${value !== undefined && value !== null ? value : 'N/A'}\n---\n`;
+                            // Convert milliseconds to seconds for specific keys
+                            if (['duration', 'processingTime', 'languageModelProcessingTime'].includes(key) && value !== undefined && value !== null) {
+                                const seconds = (value / 1000).toFixed(2);
+                                formattedString += `## ${key}\n\`${seconds}s\`\n---\n`;
+                            } else {
+                                formattedString += `## ${key}\n${value !== undefined && value !== null ? value : 'N/A'}\n---\n`;
+                            }
                         });
                     
                     return {
@@ -173,7 +179,13 @@ function run(argv) {
                         .filter(([key]) => !desiredOrder.includes(key) && key !== 'segments' && key !== 'datetime' && key !== 'appVersion')
                         .sort(([a], [b]) => a.localeCompare(b))
                         .forEach(([key, value]) => {
-                            formattedString += `## ${key}\n${value !== undefined && value !== null ? value : 'N/A'}\n---\n`;
+                            // Convert milliseconds to seconds for specific keys
+                            if (['duration', 'processingTime', 'languageModelProcessingTime'].includes(key) && value !== undefined && value !== null) {
+                                const seconds = (value / 1000).toFixed(2);
+                                formattedString += `## ${key}\n\`${seconds}s\`\n---\n`;
+                            } else {
+                                formattedString += `## ${key}\n${value !== undefined && value !== null ? value : 'N/A'}\n---\n`;
+                            }
                         });
                     
                     return {
