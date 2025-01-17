@@ -202,6 +202,7 @@ In the end, you'll have the same auto-pasting and auto-closing features from Sup
 - Best used with modes that don't have LLM processing in SuperWhisper, or you'll wait for processing that won't be used.
 <details>
   <summary><b>👇️ Comes with the following commands:</b></summary>
+  
   - Ask Google
   - Ask Youtube
   - Ask Perplexity
