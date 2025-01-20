@@ -41,8 +41,8 @@ This Alfred workflow is designed to enhance your experience with [SuperWhisper](
 
 - **Supports fuzzy search and filtering.** This allows you to—for example—filter ‘Super Mode’ by simply typing ‘sm’ while in the modes menu.
 
-- **Optional 'copySelect helper'.** If recording is triggered by using the Workflow and the user has text selected on Arc or Safari, it will be copied to the clipboard. This is particularly useful for users that have modes with the 'use copied text' feature in SuperWhisper; if no text is selected when triggering the recording, or if user is not on one of those apps, nothing will happen.
-
+- **Optional 'copySelect helper'.** If recording is triggered by using the Workflow and the user has text selected, it will be copied to the clipboard. This is particularly useful for users that have modes with the 'use copied text' feature in SuperWhisper; if no text is selected when triggering the recording nothing will happen.
+  
 - If you have [Keyboard Maestro](https://www.keyboardmaestro.com/), a macro group allows the **display of your current mode on the Menu Bar. This also includes options for easily switching the SuperWisper recording window ON/OFF, using action modes, and setting up voice commands** (experimental).
 
 *NOTE: Some workflow configuration options marked as experimental rely on AppleScript, and compatibility with system in languages other than English may vary.* 
@@ -52,7 +52,7 @@ This Alfred workflow is designed to enhance your experience with [SuperWhisper](
 
 * [SuperWhisper](https://superwhisper.com/) has to be running.
 
-* The "Copy Selected Text" option in the workflow's configuration will copy selected text from Arc & Safari using Javascript (which is more reliable than Accessibility). For this to work in Safari a few extra steps are necessary: Open Safari Settings, go to Advanced section, enable "Show Develop menu in menu bar", and in the Develop menu, select "Allow JavaScript from Apple Events". This option just makes the native SW functionality more reliable, especially in these two browsers where accessibility seems to not always work.
+* The "Copy Selected Text" option in the workflow's configuration will copy selected text from Arc & Safari using Javascript. For this to work in Safari a few extra steps are necessary: Open Safari Settings, go to Advanced section, enable "Show Develop menu in menu bar", and in the Develop menu, select "Allow JavaScript from Apple Events". This option just makes the native SW functionality more reliable, especially in these two browsers where accessibility seems to not always work.
 
 * Additional optional/experimental features require Keyboard Maestro macro group from the [LATEST RELEASE](https://github.com/ognistik/alfred-superwhisper/releases/latest). **[Make sure to read about its use.](#the-km-macros)** If you don't have Keyboard Maestro installed, avoid activating this option in the Workflow's configuration to prevent potential errors.
 
