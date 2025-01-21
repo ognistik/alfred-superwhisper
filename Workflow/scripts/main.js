@@ -4,7 +4,6 @@ ObjC.import('Foundation');
 function run(argv) {
     var query = argv[0];
     const swPath = $.getenv('swPath');
-    const showSM = $.getenv('showSM');
     const showHistory = $.getenv('showHistory');
     const favModeA = $.getenv('favModeA');
     const favModeAName = $.getenv('favModeAName');
@@ -448,26 +447,6 @@ function run(argv) {
                     }
                 }
             })));
-        }
-        if (showSM === '1'){
-            items.push({
-                uid: 'smode',
-                type: 'default',
-                autocomplete:'Super Mode',
-                title: `Super Mode`,
-                subtitle: `↩ Activate • ⌘↩ Activate and Record • ⌘C Copy DeepLink`,
-                variables: { theAction: 'activateSuperM' },
-                text: {
-                    'copy': `activateRecordSuperM`,
-                },
-                mods: {
-                    cmd: {
-                        subtitle: 'Activate and Record',
-                        variables: {
-                            theAction: 'activateRecordSuperM'
-                        }
-                    }}
-            });
         }
         if (items.length === 0) {
             items.push({
