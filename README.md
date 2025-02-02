@@ -145,6 +145,14 @@ Using [the external trigger](https://www.alfredapp.com/help/workflows/triggers/e
 ---
 
 ## THE KM MACROS
+
+---
+
+## IMPORTANT
+SuperWisper's version 1.44.0 is currently the last update where the Keyboard Maestro macros function as they were supposed to. I'm talking specifically about the action modes for pasting the user's prompt along with the result, and web searches. This is due to a change in the app that has stopped this setup from working as it is. The developer has mentioned a solution that will be officially supported, making it more reliable than before. If you rely on these features, you may want to wait before updating past version 1.44.0. Everything else should continue to function normally. Will update the macros as soon as the alternative is officially out.
+
+---
+
 This is an experimental macro group which adds extra features to an already versatile app. Here's what it can do:
 
 1. Show current SW mode in menu bar (best with short mode names).

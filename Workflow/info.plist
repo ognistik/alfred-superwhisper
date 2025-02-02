@@ -1015,8 +1015,6 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>6E946E18-6DE6-4614-92B1-1F08D2C75B69</string>
-				<key>disabled</key>
-				<true/>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -1029,6 +1027,8 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>F04BC166-5102-45A6-97E0-4A66D63DC09F</string>
+				<key>disabled</key>
+				<true/>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -6119,7 +6119,7 @@ Please be aware that since this workflow is non-official, it may require occasio
 			<key>colorindex</key>
 			<integer>3</integer>
 			<key>xpos</key>
-			<real>4570</real>
+			<real>4560</real>
 			<key>ypos</key>
 			<real>150</real>
 		</dict>
