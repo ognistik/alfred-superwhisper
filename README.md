@@ -140,7 +140,7 @@ Using [the external trigger](https://www.alfredapp.com/help/workflows/triggers/e
 
 </details>
 
-> If you use Superwhisper's feature to include clipboard text as context for AI, the workflow has a built-in copySelect small CLI tool which you set in the configuration of the workflow (and is activated when using Alfred to start a recording), but you can also use the external trigger `copySelect` for this. When triggered, it checks if you have text selected - if you do, it copies it to your clipboard. If nothing is selected, it does nothing. You can map this to the same keyboard shortcut you use for Superwhisper using tools like Karabiner-Elements. This way, whether you use the workflow or Superwhisper's default shortcut to record, selected text will always be copied automatically.
+> If you use Superwhisper's feature to include clipboard text as context for AI, the workflow has a built-in copySelect small CLI tool which you set in the configuration of the workflow (and is—optionally—activated when using Alfred to start a recording), but you can also use the external trigger `copySelect` for this. When triggered, it checks if you have text selected - if you do, it copies it to your clipboard. If nothing is selected, it does nothing. You can map this to the same keyboard shortcut you use for Superwhisper using tools like Karabiner-Elements. This way, whether you use the workflow or Superwhisper's default shortcut to record, selected text will always be copied automatically.
 
 ---
 
@@ -149,7 +149,7 @@ Using [the external trigger](https://www.alfredapp.com/help/workflows/triggers/e
 ---
 
 ## IMPORTANT
-SuperWisper's version 1.44.0 is currently the last update where the Keyboard Maestro macros function as they were supposed to. I'm talking specifically about the action modes for pasting the user's prompt along with the result, and web searches. This is due to a change in the app that has stopped this setup from working as it is. The developer has mentioned a solution that will be officially supported, making it more reliable than before. If you rely on these features, you may want to wait before updating past version 1.44.0. Everything else should continue to function normally. Will update the macros as soon as the alternative is officially out.
+**SuperWisper's version 1.44.0 is currently the last update where these Keyboard Maestro macros function as they were supposed to.** I'm talking specifically about the action modes for pasting the user's prompt along with the result, and web searches. This is due to a change in the app that has stopped this setup from working as it is. The developer has mentioned a solution that will be officially supported, making it more reliable than before. If you rely on these features, you may want to wait before updating past version 1.44.0. Everything else should continue to function normally. Will update the macros as soon as the alternative is officially out.
 
 ---
 
