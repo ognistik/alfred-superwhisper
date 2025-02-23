@@ -2566,6 +2566,7 @@ xattr -d com.apple.quarantine ./selectTrue &gt;/dev/null 2&gt;&amp;1
 					<string>io.iina.mpeg4-audio</string>
 					<string>io.iina.wav</string>
 					<string>public.mp3</string>
+					<string>public.mpeg-4</string>
 					<string>public.wav</string>
 				</array>
 				<key>name</key>
