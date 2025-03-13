@@ -244,38 +244,59 @@ function run(argv) {
         });
 
     } else if (theAction === 'processLast') {
-        // Get file manager
         const fileManager = $.NSFileManager.defaultManager;
         const error = $();
+        
+        // Get current active application before opening superwhisper
+        const app = Application.currentApplication();
+        app.includeStandardAdditions = true;
+        
+        // Get frontmost app name using System Events
+        const systemEvents = Application('System Events');
+        let frontmostApp = '';
+        
+        try {
+            const frontProcess = systemEvents.processes.whose({ frontmost: true })[0];
+            frontmostApp = frontProcess.name();
+        } catch (e) {
+            frontmostApp = 'Finder';
+        }
         
         // Get contents of recordings directory
         const contents = fileManager.contentsOfDirectoryAtPathError($(recDir), error);
         
         if (!error.code) {
-            // Sort contents to get latest folder
+            // Sort contents to get latest folders
             const sortedContents = ObjC.unwrap(contents).sort((a, b) => {
                 return ObjC.unwrap(b).localeCompare(ObjC.unwrap(a));
             });
-
+        
             if (sortedContents.length > 0) {
-                // Get latest folder
-                const latestFolder = ObjC.unwrap(sortedContents[0]);
-                const wavPath = recDir + '/' + latestFolder + '/output.wav';
+                // Check up to 10 most recent folders
+                const foldersToCheck = Math.min(10, sortedContents.length);
                 
-                // Check if output.wav exists
-                if (fileManager.fileExistsAtPath($(wavPath))) {
-                    // Open with SuperWhisper using AppleScript
-                    const app = Application.currentApplication();
-                    app.includeStandardAdditions = true;
-                    app.doShellScript(`open -a "superwhisper" "${wavPath}"`);
+                for (let i = 0; i < foldersToCheck; i++) {
+                    const folder = ObjC.unwrap(sortedContents[i]);
+                    const wavPath = recDir + '/' + folder + '/output.wav';
+                    
+                    if (fileManager.fileExistsAtPath($(wavPath))) {
+                        // Open superwhisper
+                        app.doShellScript(`open -g -a "superwhisper" "${wavPath}"`);
+                        // Only reactivate previous app if it's not Electron
+                        if (!['Electron', 'Finder'].includes(frontmostApp)) {
+                            app.doShellScript(`osascript -e 'tell application "${frontmostApp}" to activate'`);
+                        }
+                        break;
+                    }
                 }
             }
         }
     } else if (theAction === 'processItem') {
-        // Open with SuperWhisper using AppleScript
         const app = Application.currentApplication();
         app.includeStandardAdditions = true;
-        app.doShellScript(`open -a "superwhisper" "${theUrl}"`);
+        const frontmostApp = Application('System Events').processes.whose({ frontmost: true })[0].name();
+        app.doShellScript(`open -g -a "superwhisper" "${theUrl}"`);
+            app.doShellScript(`open -a "${frontmostApp}"`);
     } else if (theAction === 'activateRecordSuperM') {
         var appleScript = `
             tell application "System Events" to tell process "superwhisper"
