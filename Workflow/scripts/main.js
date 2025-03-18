@@ -5,6 +5,7 @@ function run(argv) {
     var query = argv[0];
     const swPath = $.getenv('swPath');
     const showHistory = $.getenv('showHistory');
+    const defaultRecord = $.getenv('defaultRecord');
     const favModeA = $.getenv('favModeA');
     const favModeAName = $.getenv('favModeAName');
     const favModeB = $.getenv('favModeB');
@@ -430,18 +431,24 @@ function run(argv) {
                 autocomplete: mode.name,
                 title: mode.name,
                 autocomplete: mode.name,
-                subtitle: `↩ Activate • ⌘↩ Activate and record • ⌘C Copy deep link`,
+                subtitle: defaultRecord === '1' 
+            ? `↩ Activate and record • ⌘↩ Activate only • ⌘C Copy deep link`
+            : `↩ Activate • ⌘↩ Activate and record • ⌘C Copy deep link`,
                 text: {
                     'copy': `superwhisper://mode?key=${encodeURIComponent(mode.key)}`,
                 },
                 arg: mode.filePath,
                 quicklookurl: mode.filePath,
-                variables: { theAction: 'openMode', theUrl: `superwhisper://mode?key=${encodeURIComponent(mode.key)}`, modeName: mode.name },
+                variables: { 
+                    theAction: defaultRecord === '1' ? 'openModeRecord' : 'openMode', 
+                    theUrl: `superwhisper://mode?key=${encodeURIComponent(mode.key)}`,
+                    modeName: mode.name
+                },
                 mods: {
                     cmd: {
-                        subtitle: 'Activate and record',
+                        subtitle: defaultRecord === '1' ? 'Activate only' : 'Activate and record',
                         variables: {
-                            theAction: 'openModeRecord',
+                            theAction: defaultRecord === '1' ? 'openMode' : 'openModeRecord',
                             theUrl: `superwhisper://mode?key=${encodeURIComponent(mode.key)}`
                         }
                     }

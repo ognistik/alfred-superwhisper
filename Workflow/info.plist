@@ -7323,6 +7323,25 @@ Please be aware that since this workflow is non-official, it may require occasio
 			<key>config</key>
 			<dict>
 				<key>default</key>
+				<false/>
+				<key>required</key>
+				<false/>
+				<key>text</key>
+				<string>Auto Start Recording</string>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>label</key>
+			<string>Mode Switching</string>
+			<key>type</key>
+			<string>checkbox</string>
+			<key>variable</key>
+			<string>defaultRecord</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
 				<string></string>
 				<key>placeholder</key>
 				<string></string>
@@ -7513,7 +7532,7 @@ Please be aware that since this workflow is non-official, it may require occasio
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
-	<string>1.1.6</string>
+	<string>1.1.7</string>
 	<key>webaddress</key>
 	<string>https://github.com/ognistik/alfred-superwhisper</string>
 </dict>
