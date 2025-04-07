@@ -251,15 +251,15 @@ function run(argv) {
         const app = Application.currentApplication();
         app.includeStandardAdditions = true;
         
-        // Get frontmost app name using System Events
+        // Get frontmost app bundle identifier using System Events
         const systemEvents = Application('System Events');
-        let frontmostApp = '';
+        let frontmostAppBundle = '';
         
         try {
             const frontProcess = systemEvents.processes.whose({ frontmost: true })[0];
-            frontmostApp = frontProcess.name();
+            frontmostAppBundle = frontProcess.bundleIdentifier();
         } catch (e) {
-            frontmostApp = 'Finder';
+            frontmostAppBundle = 'com.apple.finder';
         }
         
         // Get contents of recordings directory
@@ -282,10 +282,8 @@ function run(argv) {
                     if (fileManager.fileExistsAtPath($(wavPath))) {
                         // Open superwhisper
                         app.doShellScript(`open -g -a "superwhisper" "${wavPath}"`);
-                        // Only reactivate previous app if it's not Electron
-                        if (!['Electron', 'Finder'].includes(frontmostApp)) {
-                            app.doShellScript(`osascript -e 'tell application "${frontmostApp}" to activate'`);
-                        }
+                        // Reactivate previous app using bundle identifier
+                        app.doShellScript(`osascript -e 'tell application id "${frontmostAppBundle}" to activate'`);
                         break;
                     }
                 }
@@ -294,9 +292,17 @@ function run(argv) {
     } else if (theAction === 'processItem') {
         const app = Application.currentApplication();
         app.includeStandardAdditions = true;
-        const frontmostApp = Application('System Events').processes.whose({ frontmost: true })[0].name();
+        
+        // Get the frontmost app's bundle identifier
+        const systemEvents = Application('System Events');
+        const frontmostProcess = systemEvents.processes.whose({ frontmost: true })[0];
+        const frontmostAppBundle = frontmostProcess.bundleIdentifier();
+        
+        // Open superwhisper in the background
         app.doShellScript(`open -g -a "superwhisper" "${theUrl}"`);
-            app.doShellScript(`open -a "${frontmostApp}"`);
+        
+        // Reactivate the original app using the bundle identifier
+        app.doShellScript(`open -b "${frontmostAppBundle}"`);
     } else if (theAction === 'activateRecordSuperM') {
         var appleScript = `
             tell application "System Events" to tell process "superwhisper"

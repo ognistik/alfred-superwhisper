@@ -881,19 +881,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>680AB08B-0A41-43C8-B650-A70689F9B789</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>B361488E-3879-447E-A9A7-E99165167D8F</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
 		<key>6BE242C7-820B-4244-80CA-5359F19BF9BE</key>
 		<array>
 			<dict>
@@ -1014,21 +1001,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>6E946E18-6DE6-4614-92B1-1F08D2C75B69</string>
-				<key>disabled</key>
-				<true/>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>sourceoutputuid</key>
-				<string>EA08C073-D19B-4105-B0F6-C6F462BB4F0E</string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>F04BC166-5102-45A6-97E0-4A66D63DC09F</string>
+				<string>C03C5F17-6188-44C7-A61C-FE68C39398D8</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -1479,19 +1452,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>B361488E-3879-447E-A9A7-E99165167D8F</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>6BE242C7-820B-4244-80CA-5359F19BF9BE</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
 		<key>B6A29B65-2D4E-4225-97B8-A1A1E9B79456</key>
 		<array>
 			<dict>
@@ -1577,6 +1537,31 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>C2CC9507-C2DD-431E-827F-80FA61C58530</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>C03C5F17-6188-44C7-A61C-FE68C39398D8</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>6E946E18-6DE6-4614-92B1-1F08D2C75B69</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>EA08C073-D19B-4105-B0F6-C6F462BB4F0E</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>F04BC166-5102-45A6-97E0-4A66D63DC09F</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -2758,6 +2743,34 @@ end tell</string>
 				<key>escaping</key>
 				<integer>68</integer>
 				<key>script</key>
+				<string>set myKMVar to "sw_copySelect" 
+
+tell application "Keyboard Maestro Engine"
+	setvariable myKMVar to "⌘ "
+	-- do script "SW Menu Bar" with parameter "getCopySelect"
+end tell</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>6</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>193E14B8-BCC0-42B2-9BF1-B77DF81F73E8</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
 				<string>set frontAppName to (name of (info for (path to frontmost application)))
 set selectedText to ""
 
@@ -2799,30 +2812,34 @@ end if</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>concurrently</key>
+				<key>conditions</key>
+				<array>
+					<dict>
+						<key>inputstring</key>
+						<string>{var:selectActive}</string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>1</string>
+						<key>outputlabel</key>
+						<string>select</string>
+						<key>uid</key>
+						<string>EA08C073-D19B-4105-B0F6-C6F462BB4F0E</string>
+					</dict>
+				</array>
+				<key>elselabel</key>
+				<string>else</string>
+				<key>hideelse</key>
 				<false/>
-				<key>escaping</key>
-				<integer>68</integer>
-				<key>script</key>
-				<string>set myKMVar to "sw_copySelect" 
-
-tell application "Keyboard Maestro Engine"
-	setvariable myKMVar to "⌘ "
-	-- do script "SW Menu Bar" with parameter "getCopySelect"
-end tell</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>6</integer>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.action.script</string>
+			<string>alfred.workflow.utility.conditional</string>
 			<key>uid</key>
-			<string>193E14B8-BCC0-42B2-9BF1-B77DF81F73E8</string>
+			<string>C03C5F17-6188-44C7-A61C-FE68C39398D8</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -5393,60 +5410,9 @@ fi</string>
 			<key>type</key>
 			<string>alfred.workflow.trigger.hotkey</string>
 			<key>uid</key>
-			<string>680AB08B-0A41-43C8-B650-A70689F9B789</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>action</key>
-				<integer>0</integer>
-				<key>argument</key>
-				<integer>0</integer>
-				<key>focusedappvariable</key>
-				<false/>
-				<key>focusedappvariablename</key>
-				<string></string>
-				<key>hotkey</key>
-				<integer>0</integer>
-				<key>hotmod</key>
-				<integer>0</integer>
-				<key>hotstring</key>
-				<string></string>
-				<key>leftcursor</key>
-				<false/>
-				<key>modsmode</key>
-				<integer>0</integer>
-				<key>relatedAppsMode</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.trigger.hotkey</string>
-			<key>uid</key>
 			<string>77F58D81-531A-437C-BA78-A6F6D4AAE3DC</string>
 			<key>version</key>
 			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argument</key>
-				<string></string>
-				<key>passthroughargument</key>
-				<false/>
-				<key>variables</key>
-				<dict>
-					<key>theAction</key>
-					<string>activateRecordSuperM</string>
-				</dict>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.argument</string>
-			<key>uid</key>
-			<string>B361488E-3879-447E-A9A7-E99165167D8F</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -6472,7 +6438,7 @@ Please be aware that since this workflow is non-official, it may require occasio
 		<key>5B28DF87-6E2B-4E55-928C-8FE4FC79F1A8</key>
 		<dict>
 			<key>xpos</key>
-			<real>4435</real>
+			<real>4440</real>
 			<key>ypos</key>
 			<real>335</real>
 		</dict>
@@ -6550,17 +6516,6 @@ Please be aware that since this workflow is non-official, it may require occasio
 			<key>ypos</key>
 			<real>730</real>
 		</dict>
-		<key>680AB08B-0A41-43C8-B650-A70689F9B789</key>
-		<dict>
-			<key>colorindex</key>
-			<integer>2</integer>
-			<key>note</key>
-			<string>Activate &amp; Record in Super Mode | Experimental</string>
-			<key>xpos</key>
-			<real>460</real>
-			<key>ypos</key>
-			<real>1425</real>
-		</dict>
 		<key>6BE242C7-820B-4244-80CA-5359F19BF9BE</key>
 		<dict>
 			<key>xpos</key>
@@ -6587,7 +6542,7 @@ Please be aware that since this workflow is non-official, it may require occasio
 			<key>colorindex</key>
 			<integer>3</integer>
 			<key>note</key>
-			<string>Experimental Route for CopySelect</string>
+			<string>Selected Text is Active</string>
 			<key>xpos</key>
 			<real>4290</real>
 			<key>ypos</key>
@@ -6628,7 +6583,7 @@ Please be aware that since this workflow is non-official, it may require occasio
 		<key>76FFD076-7C3F-4F25-9D5D-2D54148FEE04</key>
 		<dict>
 			<key>xpos</key>
-			<real>4190</real>
+			<real>4130</real>
 			<key>ypos</key>
 			<real>385</real>
 		</dict>
@@ -6805,7 +6760,7 @@ Please be aware that since this workflow is non-official, it may require occasio
 			<key>note</key>
 			<string>Update MenuBar Mode</string>
 			<key>xpos</key>
-			<real>4050</real>
+			<real>3990</real>
 			<key>ypos</key>
 			<real>385</real>
 		</dict>
@@ -6897,13 +6852,6 @@ Please be aware that since this workflow is non-official, it may require occasio
 			<key>ypos</key>
 			<real>1050</real>
 		</dict>
-		<key>B361488E-3879-447E-A9A7-E99165167D8F</key>
-		<dict>
-			<key>xpos</key>
-			<real>615</real>
-			<key>ypos</key>
-			<real>1455</real>
-		</dict>
 		<key>B6A29B65-2D4E-4225-97B8-A1A1E9B79456</key>
 		<dict>
 			<key>xpos</key>
@@ -6940,6 +6888,13 @@ Please be aware that since this workflow is non-official, it may require occasio
 			<real>915</real>
 			<key>ypos</key>
 			<real>1080</real>
+		</dict>
+		<key>C03C5F17-6188-44C7-A61C-FE68C39398D8</key>
+		<dict>
+			<key>xpos</key>
+			<real>4185</real>
+			<key>ypos</key>
+			<real>375</real>
 		</dict>
 		<key>C1C2F16A-213F-4FA9-99C1-25E7262C2F92</key>
 		<dict>
@@ -7187,9 +7142,9 @@ Please be aware that since this workflow is non-official, it may require occasio
 		<key>F04BC166-5102-45A6-97E0-4A66D63DC09F</key>
 		<dict>
 			<key>xpos</key>
-			<real>4290</real>
+			<real>4285</real>
 			<key>ypos</key>
-			<real>355</real>
+			<real>370</real>
 		</dict>
 		<key>F65FB7B4-FE80-4EAE-BF9E-432BFE81BE93</key>
 		<dict>
@@ -7529,8 +7484,15 @@ Please be aware that since this workflow is non-official, it may require occasio
 			<string>kmMode</string>
 		</dict>
 	</array>
+	<key>variables</key>
+	<dict>
+		<key>selectActive</key>
+		<string>1</string>
+	</dict>
 	<key>variablesdontexport</key>
-	<array/>
+	<array>
+		<string>selectActive</string>
+	</array>
 	<key>version</key>
 	<string>1.1.7</string>
 	<key>webaddress</key>
