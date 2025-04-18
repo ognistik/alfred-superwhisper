@@ -43,7 +43,7 @@ This Alfred workflow is designed to enhance your experience with [Superwhisper](
 
 - **Optional 'copySelect helper'.** If recording is triggered by using the Workflow and the user has text selected, it will be copied to the clipboard. This is particularly useful for users that have modes with the 'use copied text' feature in Superwhisper; if no text is selected when triggering the recording nothing will happen.
   
-- If you have [Keyboard Maestro](https://www.keyboardmaestro.com/), [this macro group](https://by.afadingthought.com/macrowhisper) allows the **display of your current mode on the Menu Bar. This also includes action modes, web searchess, and custom automations** (experimental).
+- If you have [Keyboard Maestro](https://www.keyboardmaestro.com/), [Macrowhisper](https://by.afadingthought.com/macrowhisper) allows the **display of your current mode on the Menu Bar. This also includes action modes, web searchess, and custom automations** (experimental).
 
 *NOTE: Some workflow configuration options marked as experimental rely on AppleScript, and compatibility with system in languages other than English may vary.* 
 
