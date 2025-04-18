@@ -43,7 +43,7 @@ This Alfred workflow is designed to enhance your experience with [Superwhisper](
 
 - **Optional 'copySelect helper'.** If recording is triggered by using the Workflow and the user has text selected, it will be copied to the clipboard. This is particularly useful for users that have modes with the 'use copied text' feature in Superwhisper; if no text is selected when triggering the recording nothing will happen.
   
-- If you have [Keyboard Maestro](https://www.keyboardmaestro.com/), a macro group allows the **display of your current mode on the Menu Bar. This also includes options for easily switching the SuperWisper recording window ON/OFF, using action modes, and setting up voice commands** (experimental).
+- If you have [Keyboard Maestro](https://www.keyboardmaestro.com/), [this macro group](https://by.afadingthought.com/macrowhisper) allows the **display of your current mode on the Menu Bar. This also includes action modes, web searchess, and custom automations** (experimental).
 
 *NOTE: Some workflow configuration options marked as experimental rely on AppleScript, and compatibility with system in languages other than English may vary.* 
 
@@ -54,7 +54,7 @@ This Alfred workflow is designed to enhance your experience with [Superwhisper](
 
 * The "Copy Selected Text" option in the workflow's configuration will copy selected text from Arc & Safari using Javascript. For this to work in Safari a few extra steps are necessary: Open Safari Settings, go to Advanced section, enable "Show Develop menu in menu bar", and in the Develop menu, select "Allow JavaScript from Apple Events". This option just makes the native SW functionality more reliable, especially in these two browsers where accessibility seems to not always work.
 
-* Additional optional/experimental features require Keyboard Maestro macro group from the [LATEST RELEASE](https://github.com/ognistik/alfred-superwhisper/releases/latest). **[Make sure to read about its use.](#the-km-macros)** If you don't have Keyboard Maestro installed, avoid activating this option in the Workflow's configuration to prevent potential errors.
+* **Additional optional/experimental features require [Keyboard Maestro macro group](https://by.afadingthought.com/macrowhisper).** If you don't have Keyboard Maestro installed, avoid activating this option in the Workflow's configuration to prevent potential errors.
 
 ---
 
@@ -141,90 +141,6 @@ Using [the external trigger](https://www.alfredapp.com/help/workflows/triggers/e
 </details>
 
 > If you use Superwhisper's feature to include clipboard text as context for AI, the workflow has a built-in copySelect small CLI tool which you set in the configuration of the workflow (and is—optionally—activated when using Alfred to start a recording), but you can also use the external trigger `copySelect` for this. When triggered, it checks if you have text selected - if you do, it copies it to your clipboard. If nothing is selected, it does nothing. You can map this to the same keyboard shortcut you use for Superwhisper using tools like Karabiner-Elements. This way, whether you use the workflow or Superwhisper's default shortcut to record, selected text will always be copied automatically.
-
----
-
-## THE KM MACROS
-
----
-
-## IMPORTANT
-**SuperWisper's version 1.44.0 is currently the last update where these Keyboard Maestro macros function as they were supposed to.** I'm talking specifically about the action modes for pasting the user's prompt along with the result, and web searches. This is due to a change in the app that has stopped this setup from working as it is. The developer has mentioned a solution that will be officially supported, making it more reliable than before. If you rely on these features, you may want to wait before updating past version 1.44.0. Everything else should continue to function normally. Will update the macros as soon as the alternative is officially out.
-
----
-
-This is an experimental macro group which adds extra features to an already versatile app. Here's what it can do:
-
-1. Show current SW mode in menu bar (best with short mode names).
-2. Show recording window status (Δ for active, ∇ for inactive).
-3. Show the "action mode" status when active (⏎ for PasteResult, ⇄ for PasteChat).
-4. Show "copySelect" indicator for a few seconds when you've activated this in the Alfred workflow and have selected text when starting a recording (⌘). 
-5. Toggle Recording Window setting on/off using its specific macro.
-6. Set or change a new "action mode" to switch between pasting options (uses Keyboard Maestro to paste instead of SW).
-7. Let users create custom Voice Commands to open websites, run Shortcuts, or perform other KM actions.
-
-*NOTE: users without the Alfred workflow will only miss 4, and 1 (mode display will only be auto updated when a new recording starts. For it to also update on mode switching you must trigger the 'SW Menu Bar' macro).* 
-
-<p align="center">
-  <img width="800" src="Workflow/assets/003.jpg">
-</p>
-
-## KM MACROS SETUP
-1. If you're not using Superwhisper's default folder (~/Documents/superwhisper), update the path in the "SW Action_Trigger" macro.
-2. In Superwhisper settings, turn OFF "Close window automatically" and "Paste result text". You can keep Recording window on, but it's not required. You can toggle this setting with the "SW Window Toggle" macro (it will quickly restart SW).
-3. Make sure you have activated the "KM Macro Group" option in Alfred's workflow configuration.
-4. The Recording Window toggle performs the switch directly on Superwhisper's preferences. It is suggested you backup this file in case of any errors: "~/Library/Preferences/com.superduper.superwhisper.plist".
-
-*NOTE: If you notice that your result is being pasted to your front app once you setup the macros, but the recording window doesn't close, go back to Superwhisper's settings and toggle off and on the "Recording window enabled" setting. In a similar way toggle on and off the "Close recording window automatically" & "Paste result text." This should make those settings register correctly in the preferences file.*
-
-**Why turn off auto-paste and auto-close:**
-- Action modes will handle closing the recording window (if there's one) and pasting.
-- Voice commands will also close the recording window IF the setting is ON.
-
-In the end, you'll have the same auto-pasting and auto-closing features from Superwhisper, but you'll control them through this macro group and the new action modes.
-
-## KM MACROS HOW TO
-### "SW Menu Bar" macro
-- Run it once and your menu bar will show your recording window status and current Superwhisper mode.
-- The macro runs automatically when you switch modes using the Alfred workflow, keeping the displayed mode current.
-- This macro will also run automatically with each new recording (by using the 'SW Action_Trigger' macro).
-
-### "PasteChat", "PasteResult", and "Action_Set" macros
-- "AM - PasteChat" and "AM - PasteResult" activate action modes. They're optional - you can get the same results triggering the "SW Action_Set" macro with parameters (`pasteResult` or `pasteChat`) through AppleScript.
-- When you turn ON PasteChat or PasteResult, you'll see an icon in your menu bar. To turn it OFF, just run the same macro again (or run "SW Action_Set" by itself).
-- To test an action mode, be in an input field. PasteResult works like Superwhisper's auto-paste: closes the recording window and pastes your result. PasteChat pastes both your voice and the result. PasteChat works great with Superwhisper modes that have "use application context" on, allowing for back-and-forth interactions with LLMs.
-- If you assign a convenient keyboard shortcut/trigger to PasteChat & PasteResult, you can easily switch between using the recording window, pasting the result automatically, or pasting voice & AI at once. You can add one more option in the mix with the "SW Window Toggle" macro.
-
-### "SW Window Toggle" macro
-- Toggles Superwhisper's "recording window enabled" setting.
-- Since this is being edited outside the app, Superwhisper will have a quick restart to update the new setting.
-
-### "SW Action_Trigger" macro
-- Runs automatically with new recordings. No need to be triggered by you.
-- Updates the folder trigger for "SW Action_Action" macro.
-- Only needs changes if you do not have Superwhisper's default location for the recordings folder (~/Documents/superwhisper/recordings).
-
-### "SW Action_Action" macro
-- Runs automatically when your dictation is processed and creates a meta.JSON file. No need to be triggered by you.
-- Handles action modes.
-- Includes the configuration of voice commands.
-
-### Voice Commands
-- The "SW Action_Action" macro reads your transcription to spot command phrases and act on them.
-- Best used with modes that don't have LLM processing in Superwhisper, or you'll wait for processing that won't be used.
-<details>
-  <summary><b>👇️ Comes with the following commands:</b></summary>
-
-  - Ask Google
-  - Ask Youtube
-  - Ask Perplexity
-  - Ask OpenAI
-  - Ask Claude
-  - Ask Rotten (Rotten Tomatoes)
-  - Ask Letterboxd
-
-  *You may add more commands by customizing the macro.*
-</details>
 
 ---
 ## CLOSING

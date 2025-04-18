@@ -2169,7 +2169,7 @@
 
 tell application "Keyboard Maestro Engine"
 	setvariable myKMVar to ""
-    	do script "SW Menu Bar" with parameter "getCopySelect"
+    	do script "MW MBar" with parameter "getCopySelect"
 end tell</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
@@ -2229,7 +2229,7 @@ end if</string>
 
 tell application "Keyboard Maestro Engine"
 	setvariable myKMVar to "⌘ "
-	-- do script "SW Menu Bar" with parameter "getCopySelect"
+	-- do script "MW MBar" with parameter "getCopySelect"
 end tell</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
@@ -2655,7 +2655,7 @@ xattr -d com.apple.quarantine ./copySelect &gt;/dev/null 2&gt;&amp;1
 
 tell application "Keyboard Maestro Engine"
 	setvariable myKMVar to ""
-    	do script "SW Menu Bar" with parameter "getCopySelect"
+    	do script "MW MBar" with parameter "getCopySelect"
 end tell</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
@@ -2747,7 +2747,7 @@ end tell</string>
 
 tell application "Keyboard Maestro Engine"
 	setvariable myKMVar to "⌘ "
-	-- do script "SW Menu Bar" with parameter "getCopySelect"
+	-- do script "MW MBar" with parameter "getCopySelect"
 end tell</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
@@ -2881,7 +2881,7 @@ end if</string>
 				<key>escaping</key>
 				<integer>68</integer>
 				<key>script</key>
-				<string>tell application "Keyboard Maestro Engine" to do script "SW Menu Bar"</string>
+				<string>tell application "Keyboard Maestro Engine" to do script "MW MBar"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -5901,6 +5901,9 @@ fi</string>
 [~ Visit on Github ~ ](https://github.com/ognistik/alfred-superwhisper) | [~ Updating? Read what's new. ~](https://github.com/ognistik/alfred-superwhisper/releases/latest) | [~ Buy me a Coffee 🙏 ~](https://buymeacoffee.com/afadingthought)
 
 ---
+Got Keyboard Maestro? [The Macros are back!](https://by.afadingthought.com/macrowhisper)
+
+---
 
 ## ABOUT
 This Alfred workflow is designed to enhance your experience with [Superwhisper](https://superwhisper.com/), an INCREDIBLE AI-powered text tool that offers dictation/transcription capabilities and access to both local and cloud language models. Please note that this workflow is not official and serves as an alternative for controlling Superwhisper efficiently.
@@ -5946,8 +5949,6 @@ This Alfred workflow is designed to enhance your experience with [Superwhisper](
 * [Superwhisper](https://superwhisper.com/) has to be running.
 
 * The "Copy Selected Text" option in the workflow's configuration will copy selected text from Arc &amp; Safari using Javascript. For this to work in Safari a few extra steps are necessary: Open Safari Settings, go to Advanced section, enable "Show Develop menu in menu bar", and in the Develop menu, select "Allow JavaScript from Apple Events". This option just makes the native SW functionality more reliable, especially in these two browsers where accessibility seems to not always work.
-
-* Additional optional/experimental features require Keyboard Maestro macro group from the [LATEST RELEASE](https://github.com/ognistik/alfred-superwhisper/releases/latest). **[Make sure to read about its use.](https://github.com/ognistik/alfred-superwhisper#the-km-macros)** If you don't have Keyboard Maestro installed, avoid activating this option in the Workflow's configuration to prevent potential errors.
 
 ---
 
@@ -7494,7 +7495,7 @@ Please be aware that since this workflow is non-official, it may require occasio
 		<string>selectActive</string>
 	</array>
 	<key>version</key>
-	<string>1.1.7</string>
+	<string>1.1.8</string>
 	<key>webaddress</key>
 	<string>https://github.com/ognistik/alfred-superwhisper</string>
 </dict>
