@@ -86,7 +86,7 @@ Controlling this workflow is straightforward, but there are some things to consi
 
 ---
 ### “CUSTOM MODE” HOTKEYS
-In addition to the two favorite modes and super mode hotkeys, users can set up six additional hotkeys. If you need more than six or require options—like activating a mode without triggering record—, consider using [the external trigger.](#the-external-trigger) This prevents potential functionality loss with future workflow updates.
+In addition to the two favorite modes and super mode hotkeys, users can set up six additional hotkeys. If you need more than six or require options—like activating a mode without triggering record—, consider using [the external trigger.](#the-external-trigger) 
 
 **To set up your custom hotkeys you need to:**
 1. Open the modes menu in Alfred.
@@ -94,6 +94,8 @@ In addition to the two favorite modes and super mode hotkeys, users can set up s
 3. Go into Alfred’s settings, Superwhisper’s workflow editor, and double click the variables block (pink color-coded) next to the hotkey you want to setup. 
 4. Paste the deep link in the right field of `theUrl`.
 5. Double click the hotkey block and choose your favorite keyboard shortcut :)
+
+**NOTE:** A better approach instead of setting these custom hotkeys within the Workflow, is to set them in a separate workflow, such as [this one.](https://github.com/user-attachments/files/19871158/Superwhisper.Triggers.zip) This prevents potential functionality loss with future workflow updates.
 
 ---
 ### THE EXTERNAL TRIGGER
