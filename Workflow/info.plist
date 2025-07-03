@@ -2701,7 +2701,7 @@ end tell</string>
 				<key>escaping</key>
 				<integer>68</integer>
 				<key>script</key>
-				<string>/usr/bin/osascript scripts/viewJson.js $1</string>
+				<string>/usr/bin/osascript scripts/viewJson.js "$1"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -3317,6 +3317,23 @@ end if</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>argument</key>
+				<string>'{query}', {variables}</string>
+				<key>cleardebuggertext</key>
+				<false/>
+				<key>processoutputs</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.debug</string>
+			<key>uid</key>
+			<string>40ACFA94-D70D-468C-A82C-25737380988E</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>externaltriggerid</key>
 				<string>menu</string>
 				<key>passinputasargument</key>
@@ -3338,23 +3355,6 @@ end if</string>
 			<string>alfred.workflow.utility.junction</string>
 			<key>uid</key>
 			<string>BB3E2B4B-6635-4042-8C08-AD8254BC9C15</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argument</key>
-				<string>'{query}', {variables}</string>
-				<key>cleardebuggertext</key>
-				<false/>
-				<key>processoutputs</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.debug</string>
-			<key>uid</key>
-			<string>40ACFA94-D70D-468C-A82C-25737380988E</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -6343,9 +6343,9 @@ Please be aware that since this workflow is non-official, it may require occasio
 		<key>40ACFA94-D70D-468C-A82C-25737380988E</key>
 		<dict>
 			<key>xpos</key>
-			<real>1630</real>
+			<real>1645</real>
 			<key>ypos</key>
-			<real>465</real>
+			<real>460</real>
 		</dict>
 		<key>482B41F3-76DF-494D-B1DC-4A6DBEA133CD</key>
 		<dict>
@@ -7488,7 +7488,7 @@ Please be aware that since this workflow is non-official, it may require occasio
 	<key>variables</key>
 	<dict>
 		<key>selectActive</key>
-		<string>1</string>
+		<string>0</string>
 	</dict>
 	<key>variablesdontexport</key>
 	<array>

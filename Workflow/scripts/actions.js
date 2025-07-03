@@ -137,6 +137,12 @@ function run(argv) {
                 
                 try {
                     const jsonContent = JSON.parse(fileContent.js);
+
+                    // Check if result exists and is not empty
+                    const resultCheck = jsonContent.result || '';
+                    if (!resultCheck.trim()) {
+                        continue; // Skip this file and check the next one
+                    }
                     
                     // Convert datetime
                     let formattedDatetime = 'N/A';
