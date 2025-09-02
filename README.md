@@ -40,21 +40,13 @@ This Alfred workflow is designed to enhance your experience with [Superwhisper](
 - Alfred's actions for **processing audio files with Superwhisper** and for **clean rendering of Superwhisper's JSON files with Alfred's Textview**.
 
 - **Supports fuzzy search and filtering.** This allows you to—for example—filter ‘Super Mode’ by simply typing ‘sm’ while in the modes menu.
-
-- **Optional 'copySelect helper'.** If recording is triggered by using the Workflow and the user has text selected, it will be copied to the clipboard. This is particularly useful for users that have modes with the 'use copied text' feature in Superwhisper; if no text is selected when triggering the recording nothing will happen.
   
-- If you have [Keyboard Maestro](https://www.keyboardmaestro.com/), [Macrowhisper](https://by.afadingthought.com/macrowhisper) allows the **display of your current mode on the Menu Bar. This also includes action modes, web searchess, and custom automations** (experimental).
-
-*NOTE: Some workflow configuration options marked as experimental rely on AppleScript, and compatibility with system in languages other than English may vary.* 
+- If you have [Keyboard Maestro](https://www.keyboardmaestro.com/), [Macrowhisper](https://by.afadingthought.com/macrowhisper) allows the **display of your current mode on the Menu Bar. Macrowhisper also includes action modes, web searchess, and custom automations** (experimental).
 
 ---
 ## REQUIREMENTS
 
 * [Superwhisper](https://superwhisper.com/) has to be running.
-
-* The "Copy Selected Text" option in the workflow's configuration will copy selected text from Arc & Safari using Javascript. For this to work in Safari a few extra steps are necessary: Open Safari Settings, go to Advanced section, enable "Show Develop menu in menu bar", and in the Develop menu, select "Allow JavaScript from Apple Events". This option just makes the native SW functionality more reliable, especially in these two browsers where accessibility seems to not always work.
-
-* **Additional optional/experimental features require [Keyboard Maestro macro group](https://by.afadingthought.com/macrowhisper).** If you don't have Keyboard Maestro installed, avoid activating this option in the Workflow's configuration to prevent potential errors.
 
 ---
 
@@ -66,7 +58,7 @@ This Alfred workflow is designed to enhance your experience with [Superwhisper](
 Controlling this workflow is straightforward, but there are some things to consider:
 
 * All available custom Hotkeys have notes to indicate their function.
-* 
+  
 * The main menu, modes, and history menus have additional options with modifiers. Make sure to read and familiarize yourself with these to make the most of the workflow.
 
 * For the History Filters, there's a secret modifier combination, CMD + OPT + RETURN. This will copy your system prompt, together with your dictation, and the result. Works for items opened on Alfred's text view as well.
@@ -81,8 +73,6 @@ Controlling this workflow is straightforward, but there are some things to consi
   * Yellow: Non-essential, but convenient for pro-users.
   * Orange: They activate and record in specific modes.
   * Green: Snippets for pasting the last voice, result, both, or including system prompt.
-
-* The "copySelect" helper tool which is activated in the workflow configuration works like other Superwhisper features that use your system's accessibility API (with the exception of when using Arc or Safari, where it uses Javascript). Depending on your front app, the accessibility features may or may not be fully supported or work as expected. That's why I suggest using the Keyboard Maestro macros together with this config setting - as it will show you clearly if the tool successfully copied your selected text or not.
 
 ---
 ### “CUSTOM MODE” HOTKEYS
