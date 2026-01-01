@@ -2480,9 +2480,7 @@ fi</string>
 				<key>runningsubtext</key>
 				<string>Please Wait...</string>
 				<key>script</key>
-				<string>xattr -d com.apple.quarantine ./scripts/fuzzy &gt;/dev/null 2&gt;&amp;1
-
-export query="$1"
+				<string>export query="$1"
 export session_var=$((RANDOM % 9000000 + 1))
 ./scripts/fuzzy /usr/bin/osascript scripts/main.js</string>
 				<key>scriptargtype</key>
