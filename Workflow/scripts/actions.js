@@ -1,18 +1,18 @@
-ObjC.import("stdlib");
-ObjC.import("Foundation");
+ObjC.import('stdlib');
+ObjC.import('Foundation');
 
 function run(_argv) {
-    var swPath = $.getenv("swPath");
-    theAction = $.getenv("theAction");
-    var favModeA = $.getenv("favModeA");
-    var favModeB = $.getenv("favModeB");
+    var swPath = $.getenv('swPath');
+    theAction = $.getenv('theAction');
+    var favModeA = $.getenv('favModeA');
+    var favModeB = $.getenv('favModeB');
     const modesDir = `${swPath}/modes`;
     const recDir = `${swPath}/recordings`;
 
     try {
-        theUrl = $.getenv("theUrl");
+        theUrl = $.getenv('theUrl');
     } catch {
-        theUrl = "";
+        theUrl = '';
     }
 
     function processLatestMetaJson(specificJsonPath = null) {
@@ -44,7 +44,7 @@ function run(_argv) {
                     const jsonContent = JSON.parse(fileContent.js);
 
                     // Convert datetime
-                    let formattedDatetime = "N/A";
+                    let formattedDatetime = 'N/A';
                     if (jsonContent.datetime) {
                         const userTimezone =
                             Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -53,62 +53,62 @@ function run(_argv) {
                         ); // Append 'Z' to treat as UTC
                         if (!Number.isNaN(datetimeObj.getTime())) {
                             const localDatetime = new Date(
-                                datetimeObj.toLocaleString("en-US", {
+                                datetimeObj.toLocaleString('en-US', {
                                     timeZone: userTimezone,
                                 }),
                             );
                             formattedDatetime =
                                 localDatetime.getFullYear() +
-                                "-" +
+                                '-' +
                                 String(localDatetime.getMonth() + 1).padStart(
                                     2,
-                                    "0",
+                                    '0',
                                 ) +
-                                "-" +
+                                '-' +
                                 String(localDatetime.getDate()).padStart(
                                     2,
-                                    "0",
+                                    '0',
                                 ) +
-                                " • " +
+                                ' • ' +
                                 String(
                                     localDatetime.getHours() % 12 || 12,
-                                ).padStart(2, "0") +
-                                ":" +
+                                ).padStart(2, '0') +
+                                ':' +
                                 String(localDatetime.getMinutes()).padStart(
                                     2,
-                                    "0",
+                                    '0',
                                 ) +
-                                ":" +
+                                ':' +
                                 String(localDatetime.getSeconds()).padStart(
                                     2,
-                                    "0",
+                                    '0',
                                 ) +
-                                " " +
-                                (localDatetime.getHours() >= 12 ? "PM" : "AM");
+                                ' ' +
+                                (localDatetime.getHours() >= 12 ? 'PM' : 'AM');
                         }
                     }
 
                     // Extract Values
-                    const llmResult = jsonContent.llmResult || "";
-                    const simpleResult = jsonContent.result || "";
-                    const system = jsonContent.prompt || "";
+                    const llmResult = jsonContent.llmResult || '';
+                    const simpleResult = jsonContent.result || '';
+                    const system = jsonContent.prompt || '';
 
                     // Create formatted string of all objects except 'segments' and 'datetime'
                     const desiredOrder = [
-                        "prompt",
-                        "rawResult",
-                        "result",
-                        "llmResult",
+                        'prompt',
+                        'rawResult',
+                        'result',
+                        'llmResult',
                     ];
 
-                    let formattedString = "";
+                    let formattedString = '';
                     const entries = Object.entries(jsonContent);
 
                     // First, add the keys in the desired order
                     for (const key of desiredOrder) {
                         if (key in jsonContent) {
                             const value = jsonContent[key];
-                            formattedString += `## ${key}\n${value !== undefined && value !== null ? value : "N/A"}\n---\n`;
+                            formattedString += `## ${key}\n${value !== undefined && value !== null ? value : 'N/A'}\n---\n`;
                         }
                     }
 
@@ -117,18 +117,18 @@ function run(_argv) {
                         .filter(
                             ([key]) =>
                                 !desiredOrder.includes(key) &&
-                                key !== "segments" &&
-                                key !== "datetime" &&
-                                key !== "appVersion",
+                                key !== 'segments' &&
+                                key !== 'datetime' &&
+                                key !== 'appVersion',
                         )
                         .sort(([a], [b]) => a.localeCompare(b))
                         .forEach(([key, value]) => {
                             // Convert milliseconds to seconds for specific keys
                             if (
                                 [
-                                    "duration",
-                                    "processingTime",
-                                    "languageModelProcessingTime",
+                                    'duration',
+                                    'processingTime',
+                                    'languageModelProcessingTime',
                                 ].includes(key) &&
                                 value !== undefined &&
                                 value !== null
@@ -136,7 +136,7 @@ function run(_argv) {
                                 const seconds = (value / 1000).toFixed(2);
                                 formattedString += `## ${key}\n\`${seconds}s\`\n---\n`;
                             } else {
-                                formattedString += `## ${key}\n${value !== undefined && value !== null ? value : "N/A"}\n---\n`;
+                                formattedString += `## ${key}\n${value !== undefined && value !== null ? value : 'N/A'}\n---\n`;
                             }
                         });
 
@@ -201,13 +201,13 @@ function run(_argv) {
                     const jsonContent = JSON.parse(fileContent.js);
 
                     // Check if result exists and is not empty
-                    const resultCheck = jsonContent.result || "";
+                    const resultCheck = jsonContent.result || '';
                     if (!resultCheck.trim()) {
                         continue; // Skip this file and check the next one
                     }
 
                     // Convert datetime
-                    let formattedDatetime = "N/A";
+                    let formattedDatetime = 'N/A';
                     if (jsonContent.datetime) {
                         const userTimezone =
                             Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -216,62 +216,62 @@ function run(_argv) {
                         ); // Append 'Z' to treat as UTC
                         if (!Number.isNaN(datetimeObj.getTime())) {
                             const localDatetime = new Date(
-                                datetimeObj.toLocaleString("en-US", {
+                                datetimeObj.toLocaleString('en-US', {
                                     timeZone: userTimezone,
                                 }),
                             );
                             formattedDatetime =
                                 localDatetime.getFullYear() +
-                                "-" +
+                                '-' +
                                 String(localDatetime.getMonth() + 1).padStart(
                                     2,
-                                    "0",
+                                    '0',
                                 ) +
-                                "-" +
+                                '-' +
                                 String(localDatetime.getDate()).padStart(
                                     2,
-                                    "0",
+                                    '0',
                                 ) +
-                                " • " +
+                                ' • ' +
                                 String(
                                     localDatetime.getHours() % 12 || 12,
-                                ).padStart(2, "0") +
-                                ":" +
+                                ).padStart(2, '0') +
+                                ':' +
                                 String(localDatetime.getMinutes()).padStart(
                                     2,
-                                    "0",
+                                    '0',
                                 ) +
-                                ":" +
+                                ':' +
                                 String(localDatetime.getSeconds()).padStart(
                                     2,
-                                    "0",
+                                    '0',
                                 ) +
-                                " " +
-                                (localDatetime.getHours() >= 12 ? "PM" : "AM");
+                                ' ' +
+                                (localDatetime.getHours() >= 12 ? 'PM' : 'AM');
                         }
                     }
 
                     // Extract Values
-                    const llmResult = jsonContent.llmResult || "";
-                    const simpleResult = jsonContent.result || "";
-                    const system = jsonContent.prompt || "";
+                    const llmResult = jsonContent.llmResult || '';
+                    const simpleResult = jsonContent.result || '';
+                    const system = jsonContent.prompt || '';
 
                     // Create formatted string of all objects except 'segments' and 'datetime'
                     const desiredOrder = [
-                        "prompt",
-                        "rawResult",
-                        "result",
-                        "llmResult",
+                        'prompt',
+                        'rawResult',
+                        'result',
+                        'llmResult',
                     ];
 
-                    let formattedString = "";
+                    let formattedString = '';
                     const entries = Object.entries(jsonContent);
 
                     // First, add the keys in the desired order
                     for (const key of desiredOrder) {
                         if (key in jsonContent) {
                             const value = jsonContent[key];
-                            formattedString += `## ${key}\n${value !== undefined && value !== null ? value : "N/A"}\n---\n`;
+                            formattedString += `## ${key}\n${value !== undefined && value !== null ? value : 'N/A'}\n---\n`;
                         }
                     }
 
@@ -280,18 +280,18 @@ function run(_argv) {
                         .filter(
                             ([key]) =>
                                 !desiredOrder.includes(key) &&
-                                key !== "segments" &&
-                                key !== "datetime" &&
-                                key !== "appVersion",
+                                key !== 'segments' &&
+                                key !== 'datetime' &&
+                                key !== 'appVersion',
                         )
                         .sort(([a], [b]) => a.localeCompare(b))
                         .forEach(([key, value]) => {
                             // Convert milliseconds to seconds for specific keys
                             if (
                                 [
-                                    "duration",
-                                    "processingTime",
-                                    "languageModelProcessingTime",
+                                    'duration',
+                                    'processingTime',
+                                    'languageModelProcessingTime',
                                 ].includes(key) &&
                                 value !== undefined &&
                                 value !== null
@@ -299,7 +299,7 @@ function run(_argv) {
                                 const seconds = (value / 1000).toFixed(2);
                                 formattedString += `## ${key}\n\`${seconds}s\`\n---\n`;
                             } else {
-                                formattedString += `## ${key}\n${value !== undefined && value !== null ? value : "N/A"}\n---\n`;
+                                formattedString += `## ${key}\n${value !== undefined && value !== null ? value : 'N/A'}\n---\n`;
                             }
                         });
 
@@ -318,7 +318,7 @@ function run(_argv) {
         return { notFound: 1 };
     }
 
-    if (theAction === "history") {
+    if (theAction === 'history') {
         const appleScript = `
             tell application "System Events" to tell process "superwhisper"
                 click menu item "History..." of menu "superwhisper" of menu bar item 1 of menu bar 2 of application process "superwhisper" of application "System Events"
@@ -333,11 +333,11 @@ function run(_argv) {
         return JSON.stringify({
             alfredworkflow: {
                 variables: {
-                    theAction: "closeAlfred",
+                    theAction: 'closeAlfred',
                 },
             },
         });
-    } else if (theAction === "activateSuperM") {
+    } else if (theAction === 'activateSuperM') {
         const appleScript = `
             tell application "System Events" to tell process "superwhisper"
             click menu item "Super" of menu "Select Mode" of menu item "Select Mode" of menu "superwhisper" of menu bar item 1 of menu bar 2 of application process "superwhisper" of application "System Events"
@@ -353,13 +353,13 @@ function run(_argv) {
         return JSON.stringify({
             alfredworkflow: {
                 variables: {
-                    theAction: "openMode",
-                    theUrl: "",
-                    noti: "Super Mode has been activated.",
+                    theAction: 'openMode',
+                    theUrl: '',
+                    noti: 'Super Mode has been activated.',
                 },
             },
         });
-    } else if (theAction === "processLast") {
+    } else if (theAction === 'processLast') {
         const fileManager = $.NSFileManager.defaultManager;
         const error = $();
 
@@ -368,8 +368,8 @@ function run(_argv) {
         app.includeStandardAdditions = true;
 
         // Get frontmost app bundle identifier using System Events
-        const systemEvents = Application("System Events");
-        let frontmostAppBundle = "";
+        const systemEvents = Application('System Events');
+        let frontmostAppBundle = '';
 
         try {
             const frontProcess = systemEvents.processes.whose({
@@ -377,7 +377,7 @@ function run(_argv) {
             })[0];
             frontmostAppBundle = frontProcess.bundleIdentifier();
         } catch {
-            frontmostAppBundle = "com.apple.finder";
+            frontmostAppBundle = 'com.apple.finder';
         }
 
         // Get contents of recordings directory
@@ -414,12 +414,12 @@ function run(_argv) {
                 }
             }
         }
-    } else if (theAction === "processItem") {
+    } else if (theAction === 'processItem') {
         const app = Application.currentApplication();
         app.includeStandardAdditions = true;
 
         // Get the frontmost app's bundle identifier
-        const systemEvents = Application("System Events");
+        const systemEvents = Application('System Events');
         const frontmostProcess = systemEvents.processes.whose({
             frontmost: true,
         })[0];
@@ -430,7 +430,7 @@ function run(_argv) {
 
         // Reactivate the original app using the bundle identifier
         app.doShellScript(`open -b "${frontmostAppBundle}"`);
-    } else if (theAction === "activateRecordSuperM") {
+    } else if (theAction === 'activateRecordSuperM') {
         const appleScript = `
             tell application "System Events" to tell process "superwhisper"
             click menu item "Super" of menu "Select Mode" of menu item "Select Mode" of menu "superwhisper" of menu bar item 1 of menu bar 2 of application process "superwhisper" of application "System Events"
@@ -447,58 +447,58 @@ function run(_argv) {
         return JSON.stringify({
             alfredworkflow: {
                 variables: {
-                    noti: "",
-                    theAction: "openModeRecord",
+                    noti: '',
+                    theAction: 'openModeRecord',
                 },
             },
         });
-    } else if (theAction === "record") {
+    } else if (theAction === 'record') {
         return JSON.stringify({
             alfredworkflow: {
                 variables: {
-                    theAction: "open",
-                    theUrl: "superwhisper://record",
+                    theAction: 'open',
+                    theUrl: 'superwhisper://record',
                 },
             },
         });
-    } else if (theAction === "revealModes") {
+    } else if (theAction === 'revealModes') {
         return JSON.stringify({
             alfredworkflow: {
                 variables: {
-                    theAction: "reveal",
+                    theAction: 'reveal',
                     theUrl: modesDir,
                 },
             },
         });
-    } else if (theAction === "settings") {
+    } else if (theAction === 'settings') {
         return JSON.stringify({
             alfredworkflow: {
                 variables: {
-                    theAction: "open",
-                    theUrl: "superwhisper://settings",
+                    theAction: 'open',
+                    theUrl: 'superwhisper://settings',
                 },
             },
         });
-    } else if (theAction === "wsettings") {
+    } else if (theAction === 'wsettings') {
         return JSON.stringify({
             alfredworkflow: {
                 variables: {
-                    theAction: "open",
-                    theUrl: "superwhisper://settings",
+                    theAction: 'open',
+                    theUrl: 'superwhisper://settings',
                 },
             },
         });
-    } else if (theAction === "activateRecordFavA") {
-        if (favModeA === "") {
+    } else if (theAction === 'activateRecordFavA') {
+        if (favModeA === '') {
             return JSON.stringify({
                 alfredworkflow: {
                     variables: {
-                        theAction: "",
+                        theAction: '',
                         noti: 'Favorite mode "A" has not been set.',
                     },
                 },
             });
-        } else if (favModeA === "activateRecordSuperM") {
+        } else if (favModeA === 'activateRecordSuperM') {
             const appleScript = `
             tell application "System Events" to tell process "superwhisper"
             click menu item "Super" of menu "Select Mode" of menu item "Select Mode" of menu "superwhisper" of menu bar item 1 of menu bar 2 of application process "superwhisper" of application "System Events"
@@ -514,9 +514,9 @@ function run(_argv) {
             return JSON.stringify({
                 alfredworkflow: {
                     variables: {
-                        noti: "",
-                        theUrl: "superwhisper://record",
-                        theAction: "open",
+                        noti: '',
+                        theUrl: 'superwhisper://record',
+                        theAction: 'open',
                     },
                 },
             });
@@ -524,23 +524,23 @@ function run(_argv) {
             return JSON.stringify({
                 alfredworkflow: {
                     variables: {
-                        theAction: "openModeRecord",
+                        theAction: 'openModeRecord',
                         theUrl: favModeA,
                     },
                 },
             });
         }
-    } else if (theAction === "activateRecordFavB") {
-        if (favModeB === "") {
+    } else if (theAction === 'activateRecordFavB') {
+        if (favModeB === '') {
             return JSON.stringify({
                 alfredworkflow: {
                     variables: {
-                        theAction: "",
+                        theAction: '',
                         noti: 'Favorite mode "B" has not been set.',
                     },
                 },
             });
-        } else if (favModeB === "activateRecordSuperM") {
+        } else if (favModeB === 'activateRecordSuperM') {
             const appleScript = `
             tell application "System Events" to tell process "superwhisper"
             click menu item "Super" of menu "Select Mode" of menu item "Select Mode" of menu "superwhisper" of menu bar item 1 of menu bar 2 of application process "superwhisper" of application "System Events"
@@ -557,9 +557,9 @@ function run(_argv) {
             return JSON.stringify({
                 alfredworkflow: {
                     variables: {
-                        noti: "",
-                        theUrl: "superwhisper://record",
-                        theAction: "open",
+                        noti: '',
+                        theUrl: 'superwhisper://record',
+                        theAction: 'open',
                     },
                 },
             });
@@ -567,32 +567,32 @@ function run(_argv) {
             return JSON.stringify({
                 alfredworkflow: {
                     variables: {
-                        theAction: "openModeRecord",
+                        theAction: 'openModeRecord',
                         theUrl: favModeB,
                     },
                 },
             });
         }
-    } else if (theAction === "viewResult") {
+    } else if (theAction === 'viewResult') {
         const result = processLatestMetaJson(theUrl);
         return JSON.stringify({
             alfredworkflow: {
                 variables: {
-                    theAction: "textView",
+                    theAction: 'textView',
                     theContent:
-                        "# " +
+                        '# ' +
                         result.datetime +
-                        "\n---\n\n" +
-                        (result.llmResult !== ""
+                        '\n---\n\n' +
+                        (result.llmResult !== ''
                             ? result.llmResult
                             : result.result),
                     copyContent:
-                        result.llmResult !== ""
+                        result.llmResult !== ''
                             ? result.llmResult
                             : result.result,
                     theVoice: result.result,
                     theResult:
-                        result.llmResult !== ""
+                        result.llmResult !== ''
                             ? result.llmResult
                             : result.result,
                     theSystem: result.system,
@@ -600,17 +600,17 @@ function run(_argv) {
                 },
             },
         });
-    } else if (theAction === "viewVoice") {
+    } else if (theAction === 'viewVoice') {
         const result = processLatestMetaJson(theUrl);
         return JSON.stringify({
             alfredworkflow: {
                 variables: {
-                    theAction: "textView",
+                    theAction: 'textView',
                     theContent: `# ${result.datetime}\n---\n\n${result.result}`,
                     copyContent: result.result,
                     theVoice: result.result,
                     theResult:
-                        result.llmResult !== ""
+                        result.llmResult !== ''
                             ? result.llmResult
                             : result.result,
                     theSystem: result.system,
@@ -618,17 +618,17 @@ function run(_argv) {
                 },
             },
         });
-    } else if (theAction === "viewJSON") {
+    } else if (theAction === 'viewJSON') {
         const result = processLatestMetaJson(theUrl);
         return JSON.stringify({
             alfredworkflow: {
                 variables: {
-                    theAction: "textView",
+                    theAction: 'textView',
                     theContent: `# ${result.datetime}\n---\n\n${result.formattedContent}`,
                     copyContent: result.formattedContent,
                     theVoice: result.result,
                     theResult:
-                        result.llmResult !== ""
+                        result.llmResult !== ''
                             ? result.llmResult
                             : result.result,
                     theSystem: result.system,
@@ -636,23 +636,23 @@ function run(_argv) {
                 },
             },
         });
-    } else if (theAction === "viewLastResult") {
+    } else if (theAction === 'viewLastResult') {
         const result = processLatestMetaJson();
         if (result.notFound === 1) {
             return JSON.stringify({
                 alfredworkflow: {
                     variables: {
-                        theAction: "",
-                        noti: "JSON file not found.",
+                        theAction: '',
+                        noti: 'JSON file not found.',
                     },
                 },
             });
-        } else if (result.result === "") {
+        } else if (result.result === '') {
             return JSON.stringify({
                 alfredworkflow: {
                     variables: {
-                        theAction: "",
-                        noti: "Result value not found.",
+                        theAction: '',
+                        noti: 'Result value not found.',
                     },
                 },
             });
@@ -660,21 +660,21 @@ function run(_argv) {
             return JSON.stringify({
                 alfredworkflow: {
                     variables: {
-                        theAction: "textView",
+                        theAction: 'textView',
                         theContent:
-                            "# " +
+                            '# ' +
                             result.datetime +
-                            "\n---\n\n" +
-                            (result.llmResult !== ""
+                            '\n---\n\n' +
+                            (result.llmResult !== ''
                                 ? result.llmResult
                                 : result.result),
                         copyContent:
-                            result.llmResult !== ""
+                            result.llmResult !== ''
                                 ? result.llmResult
                                 : result.result,
                         theVoice: result.result,
                         theResult:
-                            result.llmResult !== ""
+                            result.llmResult !== ''
                                 ? result.llmResult
                                 : result.result,
                         theSystem: result.system,
@@ -683,14 +683,14 @@ function run(_argv) {
                 },
             });
         }
-    } else if (theAction === "viewLastJSON") {
+    } else if (theAction === 'viewLastJSON') {
         const result = processLatestMetaJson();
         if (result.notFound === 1) {
             return JSON.stringify({
                 alfredworkflow: {
                     variables: {
-                        theAction: "",
-                        noti: "JSON file not found.",
+                        theAction: '',
+                        noti: 'JSON file not found.',
                     },
                 },
             });
@@ -698,12 +698,12 @@ function run(_argv) {
             return JSON.stringify({
                 alfredworkflow: {
                     variables: {
-                        theAction: "textView",
+                        theAction: 'textView',
                         theContent: `# ${result.datetime}\n---\n\n${result.formattedContent}`,
                         copyContent: result.formattedContent,
                         theVoice: result.result,
                         theResult:
-                            result.llmResult !== ""
+                            result.llmResult !== ''
                                 ? result.llmResult
                                 : result.result,
                         theSystem: result.system,
@@ -712,23 +712,23 @@ function run(_argv) {
                 },
             });
         }
-    } else if (theAction === "editLastResult") {
+    } else if (theAction === 'editLastResult') {
         const result = processLatestMetaJson();
         if (result.notFound === 1) {
             return JSON.stringify({
                 alfredworkflow: {
                     variables: {
-                        theAction: "",
-                        noti: "JSON file not found.",
+                        theAction: '',
+                        noti: 'JSON file not found.',
                     },
                 },
             });
-        } else if (result.result === "") {
+        } else if (result.result === '') {
             return JSON.stringify({
                 alfredworkflow: {
                     variables: {
-                        theAction: "",
-                        noti: "Result value not found.",
+                        theAction: '',
+                        noti: 'Result value not found.',
                     },
                 },
             });
@@ -736,72 +736,72 @@ function run(_argv) {
             return JSON.stringify({
                 alfredworkflow: {
                     variables: {
-                        theAction: "editView",
+                        theAction: 'editView',
                         theContent:
-                            result.llmResult !== ""
+                            result.llmResult !== ''
                                 ? result.llmResult
                                 : result.result,
                         copyContent:
-                            result.llmResult !== ""
+                            result.llmResult !== ''
                                 ? result.llmResult
                                 : result.result,
                     },
                 },
             });
         }
-    } else if (theAction === "copyChat") {
+    } else if (theAction === 'copyChat') {
         const result = processLatestMetaJson(theUrl);
         return JSON.stringify({
             alfredworkflow: {
                 variables: {
                     copyContent:
-                        "## USER\n" +
+                        '## USER\n' +
                         result.result +
-                        "\n\n" +
-                        "## AI\n" +
-                        (result.llmResult !== ""
+                        '\n\n' +
+                        '## AI\n' +
+                        (result.llmResult !== ''
                             ? result.llmResult
                             : result.result) +
-                        "\n\n---\n",
+                        '\n\n---\n',
                 },
             },
         });
-    } else if (theAction === "copyLongChat") {
+    } else if (theAction === 'copyLongChat') {
         const result = processLatestMetaJson(theUrl);
         return JSON.stringify({
             alfredworkflow: {
                 variables: {
                     copyContent:
-                        "## SYSTEM\n" +
+                        '## SYSTEM\n' +
                         result.system +
-                        "\n\n## USER\n" +
+                        '\n\n## USER\n' +
                         result.result +
-                        "\n\n" +
-                        "## AI\n" +
-                        (result.llmResult !== ""
+                        '\n\n' +
+                        '## AI\n' +
+                        (result.llmResult !== ''
                             ? result.llmResult
                             : result.result) +
-                        "\n\n---\n",
+                        '\n\n---\n',
                 },
             },
         });
-    } else if (theAction === "copyLast") {
+    } else if (theAction === 'copyLast') {
         const result = processLatestMetaJson();
         if (result.notFound === 1) {
             return JSON.stringify({
                 alfredworkflow: {
                     variables: {
-                        theAction: "",
-                        noti: "JSON file not found.",
+                        theAction: '',
+                        noti: 'JSON file not found.',
                     },
                 },
             });
-        } else if (result.result === "") {
+        } else if (result.result === '') {
             return JSON.stringify({
                 alfredworkflow: {
                     variables: {
-                        theAction: "",
-                        noti: "Result value not found.",
+                        theAction: '',
+                        noti: 'Result value not found.',
                     },
                 },
             });
@@ -810,21 +810,21 @@ function run(_argv) {
                 alfredworkflow: {
                     variables: {
                         copyContent:
-                            result.llmResult !== ""
+                            result.llmResult !== ''
                                 ? result.llmResult
                                 : result.result,
                     },
                 },
             });
         }
-    } else if (theAction === "revealJson") {
+    } else if (theAction === 'revealJson') {
         const result = processLatestMetaJson();
         if (result.notFound === 1) {
             return JSON.stringify({
                 alfredworkflow: {
                     variables: {
-                        theAction: "",
-                        noti: "JSON file not found.",
+                        theAction: '',
+                        noti: 'JSON file not found.',
                     },
                 },
             });
@@ -832,20 +832,20 @@ function run(_argv) {
             return JSON.stringify({
                 alfredworkflow: {
                     variables: {
-                        theAction: "reveal",
+                        theAction: 'reveal',
                         theUrl: result.latestJson,
                     },
                 },
             });
         }
-    } else if (theAction.startsWith("paste")) {
+    } else if (theAction.startsWith('paste')) {
         const result = processLatestMetaJson();
         if (result.notFound === 1) {
             return JSON.stringify({
                 alfredworkflow: {
                     variables: {
-                        theAction: "",
-                        noti: "JSON file not found.",
+                        theAction: '',
+                        noti: 'JSON file not found.',
                     },
                 },
             });
@@ -855,7 +855,7 @@ function run(_argv) {
                     variables: {
                         prompt: result.result,
                         result:
-                            result.llmResult !== ""
+                            result.llmResult !== ''
                                 ? result.llmResult
                                 : result.result,
                         system: result.system,

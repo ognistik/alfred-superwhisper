@@ -1,24 +1,24 @@
-ObjC.import("stdlib");
-ObjC.import("Foundation");
+ObjC.import('stdlib');
+ObjC.import('Foundation');
 
 function run(_argv) {
-    const swPath = $.getenv("swPath");
-    const showHistory = $.getenv("showHistory");
-    const defaultRecord = $.getenv("defaultRecord");
-    const favModeA = $.getenv("favModeA");
-    const favModeAName = $.getenv("favModeAName");
-    const favModeB = $.getenv("favModeB");
-    const favModeBName = $.getenv("favModeBName");
+    const swPath = $.getenv('swPath');
+    const showHistory = $.getenv('showHistory');
+    const defaultRecord = $.getenv('defaultRecord');
+    const favModeA = $.getenv('favModeA');
+    const favModeAName = $.getenv('favModeAName');
+    const favModeB = $.getenv('favModeB');
+    const favModeBName = $.getenv('favModeBName');
     const modesDir = `${swPath}/modes`;
     const recDir = `${swPath}/recordings`;
-    const hisNumber = $.getenv("hisNumber");
+    const hisNumber = $.getenv('hisNumber');
     const fileManager = $.NSFileManager.defaultManager;
 
     //This allows the same input to be reused
     try {
-        theAction = $.getenv("theAction");
+        theAction = $.getenv('theAction');
     } catch {
-        theAction = "";
+        theAction = '';
     }
 
     function getModes() {
@@ -41,7 +41,7 @@ function run(_argv) {
         for (let i = 0; i < contents.count; i++) {
             const file = ObjC.unwrap(contents.objectAtIndex(i));
 
-            if (typeof file !== "string" || !file.endsWith(".json")) {
+            if (typeof file !== 'string' || !file.endsWith('.json')) {
                 continue;
             }
 
@@ -128,7 +128,7 @@ function run(_argv) {
                     const jsonContent = JSON.parse(fileContent.js);
 
                     // Convert datetime
-                    let formattedDatetime = "N/A";
+                    let formattedDatetime = 'N/A';
                     if (jsonContent.datetime) {
                         const userTimezone =
                             Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -137,54 +137,54 @@ function run(_argv) {
                         ); // Append 'Z' to treat as UTC
                         if (!Number.isNaN(datetimeObj.getTime())) {
                             const localDatetime = new Date(
-                                datetimeObj.toLocaleString("en-US", {
+                                datetimeObj.toLocaleString('en-US', {
                                     timeZone: userTimezone,
                                 }),
                             );
                             formattedDatetime =
                                 localDatetime.getFullYear() +
-                                "-" +
+                                '-' +
                                 String(localDatetime.getMonth() + 1).padStart(
                                     2,
-                                    "0",
+                                    '0',
                                 ) +
-                                "-" +
+                                '-' +
                                 String(localDatetime.getDate()).padStart(
                                     2,
-                                    "0",
+                                    '0',
                                 ) +
-                                " • " +
+                                ' • ' +
                                 String(
                                     localDatetime.getHours() % 12 || 12,
-                                ).padStart(2, "0") +
-                                ":" +
+                                ).padStart(2, '0') +
+                                ':' +
                                 String(localDatetime.getMinutes()).padStart(
                                     2,
-                                    "0",
+                                    '0',
                                 ) +
-                                ":" +
+                                ':' +
                                 String(localDatetime.getSeconds()).padStart(
                                     2,
-                                    "0",
+                                    '0',
                                 ) +
-                                " " +
-                                (localDatetime.getHours() >= 12 ? "PM" : "AM");
+                                ' ' +
+                                (localDatetime.getHours() >= 12 ? 'PM' : 'AM');
                         }
                     }
 
                     // Extract llmResult
-                    const llmResult = jsonContent.llmResult || "";
-                    const simpleResult = jsonContent.result || "";
+                    const llmResult = jsonContent.llmResult || '';
+                    const simpleResult = jsonContent.result || '';
 
                     // Create formatted string of all objects except 'segments' and 'datetime'
-                    let formattedString = "";
+                    let formattedString = '';
                     for (const [key, value] of Object.entries(jsonContent)) {
                         if (
-                            key !== "segments" &&
-                            key !== "datetime" &&
-                            key !== "appVersion"
+                            key !== 'segments' &&
+                            key !== 'datetime' &&
+                            key !== 'appVersion'
                         ) {
-                            formattedString += `## ${key}\n${value !== undefined && value !== null ? value : "N/A"}\n---\n`;
+                            formattedString += `## ${key}\n${value !== undefined && value !== null ? value : 'N/A'}\n---\n`;
                         }
                     }
 
@@ -203,7 +203,7 @@ function run(_argv) {
         return { notFound: 1 };
     }
 
-    function processMetaJsonFiles(mode = "default") {
+    function processMetaJsonFiles(mode = 'default') {
         const error = $();
         const results = [];
 
@@ -228,7 +228,7 @@ function run(_argv) {
 
         // If hisNumber is 0, check all folders, otherwise check specified number
         const foldersToCheck =
-            hisNumber === "0"
+            hisNumber === '0'
                 ? sortedContents.length
                 : Math.min(Number(hisNumber), sortedContents.length);
 
@@ -253,14 +253,14 @@ function run(_argv) {
 
                 try {
                     const jsonContent = JSON.parse(fileContent.js);
-                    const llmResult = jsonContent.llmResult || "";
-                    const simpleResult = jsonContent.result || "";
+                    const llmResult = jsonContent.llmResult || '';
+                    const simpleResult = jsonContent.result || '';
 
                     // Skip if both results are empty
                     if (!llmResult && !simpleResult) continue;
 
                     // Format datetime
-                    let formattedDate = "";
+                    let formattedDate = '';
                     if (jsonContent.datetime) {
                         const userTimezone =
                             Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -269,35 +269,35 @@ function run(_argv) {
                         );
                         if (!Number.isNaN(datetimeObj.getTime())) {
                             const localDatetime = new Date(
-                                datetimeObj.toLocaleString("en-US", {
+                                datetimeObj.toLocaleString('en-US', {
                                     timeZone: userTimezone,
                                 }),
                             );
-                            formattedDate = `${String(localDatetime.getMonth() + 1).padStart(2, "0")}/${String(localDatetime.getDate()).padStart(2, "0")} ${String(localDatetime.getHours() % 12 || 12).padStart(2, "0")}:${String(localDatetime.getMinutes()).padStart(2, "0")} ${localDatetime.getHours() >= 12 ? "PM" : "AM"} • `;
+                            formattedDate = `${String(localDatetime.getMonth() + 1).padStart(2, '0')}/${String(localDatetime.getDate()).padStart(2, '0')} ${String(localDatetime.getHours() % 12 || 12).padStart(2, '0')}:${String(localDatetime.getMinutes()).padStart(2, '0')} ${localDatetime.getHours() >= 12 ? 'PM' : 'AM'} • `;
                         }
                     }
 
                     // Build subtitle based on available content
                     let subtitle = formattedDate;
-                    if (mode === "voice") {
-                        subtitle += "↩ View voice • ";
+                    if (mode === 'voice') {
+                        subtitle += '↩ View voice • ';
                         if (llmResult) {
-                            subtitle += "⌘↩ View AI • ⌥↩ Copy voice & AI • ";
+                            subtitle += '⌘↩ View AI • ⌥↩ Copy voice & AI • ';
                         }
-                        subtitle += "^↩ JSON";
+                        subtitle += '^↩ JSON';
                     } else {
                         if (llmResult) {
                             subtitle +=
-                                "↩ View AI • ⌘↩ View voice • ⌥↩ Copy voice & AI • ";
+                                '↩ View AI • ⌘↩ View voice • ⌥↩ Copy voice & AI • ';
                         } else {
-                            subtitle += "↩ View voice • ";
+                            subtitle += '↩ View voice • ';
                         }
-                        subtitle += "^↩ JSON";
+                        subtitle += '^↩ JSON';
                     }
 
                     results.push({
                         title:
-                            mode === "voice"
+                            mode === 'voice'
                                 ? simpleResult
                                 : llmResult || simpleResult,
                         subtitle: subtitle,
@@ -315,133 +315,133 @@ function run(_argv) {
 
     var items = [];
 
-    if (theAction === "") {
+    if (theAction === '') {
         const result = processLatestMetaJson();
         items.push({
-            uid: "settings",
-            type: "default",
-            title: "Settings",
-            autocomplete: "Settings",
+            uid: 'settings',
+            type: 'default',
+            title: 'Settings',
+            autocomplete: 'Settings',
             arg: result.latestJson,
             subtitle:
-                "↩ Open SuperWhisper settings • ⌘↩ Open workflow settings",
+                '↩ Open SuperWhisper settings • ⌘↩ Open workflow settings',
             text: {
                 copy:
                     result.notFound === 1
-                        ? ""
-                        : result.llmResult !== ""
+                        ? ''
+                        : result.llmResult !== ''
                           ? result.llmResult
-                          : result.result !== ""
+                          : result.result !== ''
                             ? result.result
-                            : "",
+                            : '',
                 largetype:
                     result.notFound === 1
-                        ? ""
+                        ? ''
                         : (result.llmResult || result.result).length > 1300
                           ? `${(result.llmResult || result.result).substring(0, 1300)}...`
                           : result.llmResult || result.result,
             },
-            variables: { theAction: "settings" },
+            variables: { theAction: 'settings' },
             mods: {
                 cmd: {
-                    subtitle: "Open workflow settings",
-                    variables: { theAction: "wsettings" },
+                    subtitle: 'Open workflow settings',
+                    variables: { theAction: 'wsettings' },
                 },
             },
-            quicklookurl: result.notFound === 1 ? "" : result.latestJson,
+            quicklookurl: result.notFound === 1 ? '' : result.latestJson,
         });
 
         items.push({
-            uid: "modes",
-            type: "default",
-            title: "Modes",
-            autocomplete: "Modes",
+            uid: 'modes',
+            type: 'default',
+            title: 'Modes',
+            autocomplete: 'Modes',
             arg: result.latestJson,
-            subtitle: "↩ Choose Mode • ⌘↩ Reveal in Finder",
+            subtitle: '↩ Choose Mode • ⌘↩ Reveal in Finder',
             text: {
                 copy:
                     result.notFound === 1
-                        ? ""
-                        : result.llmResult !== ""
+                        ? ''
+                        : result.llmResult !== ''
                           ? result.llmResult
-                          : result.result !== ""
+                          : result.result !== ''
                             ? result.result
-                            : "",
+                            : '',
                 largetype:
                     result.notFound === 1
-                        ? ""
+                        ? ''
                         : (result.llmResult || result.result).length > 1300
                           ? `${(result.llmResult || result.result).substring(0, 1300)}...`
                           : result.llmResult || result.result,
             },
-            variables: { theAction: "selectMode" },
-            quicklookurl: result.notFound === 1 ? "" : result.latestJson,
+            variables: { theAction: 'selectMode' },
+            quicklookurl: result.notFound === 1 ? '' : result.latestJson,
             mods: {
                 cmd: {
-                    subtitle: "Reveal in Finder",
+                    subtitle: 'Reveal in Finder',
                     variables: {
-                        theAction: "revealModes",
+                        theAction: 'revealModes',
                     },
                 },
             },
         });
 
         items.push({
-            uid: "startRecording",
-            type: "default",
-            title: "Toggle Recording",
-            autocomplete: "Toggle Recording",
+            uid: 'startRecording',
+            type: 'default',
+            title: 'Toggle Recording',
+            autocomplete: 'Toggle Recording',
             arg: result.latestJson,
             subtitle:
-                "↩ Toggle recording" +
-                (favModeA !== "" ? ` • ⌘↩ Record in "${favModeAName}"` : "") +
-                (favModeB !== "" ? ` • ⌥↩ Record in "${favModeBName}"` : ""),
+                '↩ Toggle recording' +
+                (favModeA !== '' ? ` • ⌘↩ Record in "${favModeAName}"` : '') +
+                (favModeB !== '' ? ` • ⌥↩ Record in "${favModeBName}"` : ''),
             text: {
                 copy:
                     result.notFound === 1
-                        ? ""
-                        : result.llmResult !== ""
+                        ? ''
+                        : result.llmResult !== ''
                           ? result.llmResult
-                          : result.result !== ""
+                          : result.result !== ''
                             ? result.result
-                            : "",
+                            : '',
                 largetype:
                     result.notFound === 1
-                        ? ""
+                        ? ''
                         : (result.llmResult || result.result).length > 1300
                           ? `${(result.llmResult || result.result).substring(0, 1300)}...`
                           : result.llmResult || result.result,
             },
-            variables: { theAction: "record" },
-            quicklookurl: result.notFound === 1 ? "" : result.latestJson,
-            ...(favModeA !== "" &&
-                favModeB !== "" && {
+            variables: { theAction: 'record' },
+            quicklookurl: result.notFound === 1 ? '' : result.latestJson,
+            ...(favModeA !== '' &&
+                favModeB !== '' && {
                     mods: {
                         cmd: {
                             subtitle: `Activate & record in "${favModeAName}" mode`,
-                            variables: { theAction: "activateRecordFavA" },
+                            variables: { theAction: 'activateRecordFavA' },
                         },
                         alt: {
                             subtitle: `Activate & record in "${favModeBName}" mode`,
-                            variables: { theAction: "activateRecordFavB" },
+                            variables: { theAction: 'activateRecordFavB' },
                         },
                     },
                 }),
-            ...(favModeA !== "" &&
-                favModeB === "" && {
+            ...(favModeA !== '' &&
+                favModeB === '' && {
                     mods: {
                         cmd: {
                             subtitle: `Activate & record in "${favModeAName}" mode`,
-                            variables: { theAction: "activateRecordFavA" },
+                            variables: { theAction: 'activateRecordFavA' },
                         },
                     },
                 }),
-            ...(favModeA === "" &&
-                favModeB !== "" && {
+            ...(favModeA === '' &&
+                favModeB !== '' && {
                     mods: {
                         alt: {
                             subtitle: `Activate & record in "${favModeBName}" mode`,
-                            variables: { theAction: "activateRecordFavB" },
+                            variables: { theAction: 'activateRecordFavB' },
                         },
                     },
                 }),
@@ -449,25 +449,25 @@ function run(_argv) {
 
         if (result.notFound !== 1) {
             items.push({
-                uid: "history",
-                type: "default",
-                title: "History",
+                uid: 'history',
+                type: 'default',
+                title: 'History',
                 arg: result.latestJson,
-                autocomplete: "History",
-                subtitle: `↩ By result • ⌘↩ By voice • ⌘⇧↩ Reprocess last • ⌥↩ Last result • ⌃↩ Last JSON ${showHistory === "1" ? "• ⇧↩ History in SW" : ""}`,
-                variables: { theAction: "selectHistoryResult" },
+                autocomplete: 'History',
+                subtitle: `↩ By result • ⌘↩ By voice • ⌘⇧↩ Reprocess last • ⌥↩ Last result • ⌃↩ Last JSON ${showHistory === '1' ? '• ⇧↩ History in SW' : ''}`,
+                variables: { theAction: 'selectHistoryResult' },
                 text: {
                     copy:
                         result.notFound === 1
-                            ? ""
-                            : result.llmResult !== ""
+                            ? ''
+                            : result.llmResult !== ''
                               ? result.llmResult
-                              : result.result !== ""
+                              : result.result !== ''
                                 ? result.result
-                                : "",
+                                : '',
                     largetype:
                         result.notFound === 1
-                            ? ""
+                            ? ''
                             : (result.llmResult || result.result).length > 1300
                               ? `${(result.llmResult || result.result).substring(0, 1300)}...`
                               : result.llmResult || result.result,
@@ -475,35 +475,35 @@ function run(_argv) {
                 quicklookurl: result.latestJson,
                 mods: {
                     cmd: {
-                        subtitle: "Filter by voice",
+                        subtitle: 'Filter by voice',
                         variables: {
-                            theAction: "selectHistoryVoice",
+                            theAction: 'selectHistoryVoice',
                         },
                     },
                     ctrl: {
-                        subtitle: "View last JSON contents",
+                        subtitle: 'View last JSON contents',
                         variables: {
-                            theAction: "viewLastJSON",
+                            theAction: 'viewLastJSON',
                         },
                     },
                     alt: {
-                        subtitle: "View last result",
+                        subtitle: 'View last result',
                         variables: {
-                            theAction: "viewLastResult",
+                            theAction: 'viewLastResult',
                         },
                     },
-                    "cmd+shift": {
-                        subtitle: "Reprocess last dictation",
+                    'cmd+shift': {
+                        subtitle: 'Reprocess last dictation',
                         variables: {
-                            theAction: "processLast",
+                            theAction: 'processLast',
                         },
                     },
-                    ...(showHistory === "1"
+                    ...(showHistory === '1'
                         ? {
                               shift: {
-                                  subtitle: "View history in SW",
+                                  subtitle: 'View history in SW',
                                   variables: {
-                                      theAction: "history",
+                                      theAction: 'history',
                                   },
                               },
                           }
@@ -511,17 +511,17 @@ function run(_argv) {
                 },
             });
         }
-    } else if (theAction === "selectMode") {
+    } else if (theAction === 'selectMode') {
         const newModes = getModes();
         if (newModes.length > 0) {
             items.push(
                 ...newModes.map((mode) => ({
                     uid: mode.key,
-                    type: "file",
+                    type: 'file',
                     title: mode.name,
                     autocomplete: mode.name,
                     subtitle:
-                        defaultRecord === "1"
+                        defaultRecord === '1'
                             ? `↩ Activate and record • ⌘↩ Activate only • ⌘C Copy deep link`
                             : `↩ Activate • ⌘↩ Activate and record • ⌘C Copy deep link`,
                     text: {
@@ -531,23 +531,23 @@ function run(_argv) {
                     quicklookurl: mode.filePath,
                     variables: {
                         theAction:
-                            defaultRecord === "1"
-                                ? "openModeRecord"
-                                : "openMode",
+                            defaultRecord === '1'
+                                ? 'openModeRecord'
+                                : 'openMode',
                         theUrl: `superwhisper://mode?key=${encodeURIComponent(mode.key)}`,
                         modeName: mode.name,
                     },
                     mods: {
                         cmd: {
                             subtitle:
-                                defaultRecord === "1"
-                                    ? "Activate only"
-                                    : "Activate and record",
+                                defaultRecord === '1'
+                                    ? 'Activate only'
+                                    : 'Activate and record',
                             variables: {
                                 theAction:
-                                    defaultRecord === "1"
-                                        ? "openMode"
-                                        : "openModeRecord",
+                                    defaultRecord === '1'
+                                        ? 'openMode'
+                                        : 'openModeRecord',
                                 theUrl: `superwhisper://mode?key=${encodeURIComponent(mode.key)}`,
                             },
                         },
@@ -558,21 +558,21 @@ function run(_argv) {
         if (items.length === 0) {
             items.push({
                 valid: false,
-                type: "default",
+                type: 'default',
                 title: `No Modes Found`,
-                arg: "",
+                arg: '',
             });
         }
-    } else if (theAction === "selectHistoryResult") {
-        const historyItems = processMetaJsonFiles("default");
+    } else if (theAction === 'selectHistoryResult') {
+        const historyItems = processMetaJsonFiles('default');
         historyItems.forEach((item) => {
             items.push({
-                type: "file",
+                type: 'file',
                 title: item.title,
                 autocomplete: item.title,
                 subtitle: item.subtitle,
                 arg: item.jsonPath,
-                variables: { theAction: "viewResult", theUrl: item.jsonPath },
+                variables: { theAction: 'viewResult', theUrl: item.jsonPath },
                 text: {
                     copy: item.llmResult || item.result,
                     largetype:
@@ -583,39 +583,39 @@ function run(_argv) {
                 quicklookurl: item.jsonPath,
                 mods: {
                     cmd: {
-                        subtitle: "View voice",
+                        subtitle: 'View voice',
                         variables: {
-                            theAction: "viewVoice",
+                            theAction: 'viewVoice',
                             theUrl: item.jsonPath,
                         },
                     },
-                    "cmd+shift": {
-                        subtitle: "Reprocess audio",
+                    'cmd+shift': {
+                        subtitle: 'Reprocess audio',
                         variables: {
-                            theAction: "processItem",
+                            theAction: 'processItem',
                             theUrl: item.recPath,
                         },
                     },
                     ctrl: {
-                        subtitle: "View JSON",
+                        subtitle: 'View JSON',
                         variables: {
-                            theAction: "viewJSON",
+                            theAction: 'viewJSON',
                             theUrl: item.jsonPath,
                         },
                     },
-                    "cmd + alt": {
-                        subtitle: "Copy system, voice & AI",
+                    'cmd + alt': {
+                        subtitle: 'Copy system, voice & AI',
                         variables: {
-                            theAction: "copyLongChat",
+                            theAction: 'copyLongChat',
                             theUrl: item.jsonPath,
                         },
                     },
-                    ...(item.llmResult !== ""
+                    ...(item.llmResult !== ''
                         ? {
                               alt: {
-                                  subtitle: "Copy voice & AI",
+                                  subtitle: 'Copy voice & AI',
                                   variables: {
-                                      theAction: "copyChat",
+                                      theAction: 'copyChat',
                                       theUrl: item.jsonPath,
                                   },
                               },
@@ -626,22 +626,22 @@ function run(_argv) {
         });
         if (historyItems.length === 0) {
             items.push({
-                type: "default",
-                title: "No History Items Found",
-                arg: "",
+                type: 'default',
+                title: 'No History Items Found',
+                arg: '',
                 valid: false,
             });
         }
-    } else if (theAction === "selectHistoryVoice") {
-        const historyItems = processMetaJsonFiles("voice");
+    } else if (theAction === 'selectHistoryVoice') {
+        const historyItems = processMetaJsonFiles('voice');
         historyItems.forEach((item) => {
             items.push({
-                type: "file",
+                type: 'file',
                 title: item.title,
                 autocomplete: item.title,
                 subtitle: item.subtitle,
                 arg: item.jsonPath,
-                variables: { theAction: "viewVoice", theUrl: item.jsonPath },
+                variables: { theAction: 'viewVoice', theUrl: item.jsonPath },
                 text: {
                     copy: item.result,
                     largetype:
@@ -652,39 +652,39 @@ function run(_argv) {
                 quicklookurl: item.jsonPath,
                 mods: {
                     cmd: {
-                        subtitle: "View AI",
+                        subtitle: 'View AI',
                         variables: {
-                            theAction: "viewResult",
+                            theAction: 'viewResult',
                             theUrl: item.jsonPath,
                         },
                     },
                     ctrl: {
-                        subtitle: "View JSON",
+                        subtitle: 'View JSON',
                         variables: {
-                            theAction: "viewJSON",
+                            theAction: 'viewJSON',
                             theUrl: item.jsonPath,
                         },
                     },
-                    "cmd+shift": {
-                        subtitle: "Reprocess audio",
+                    'cmd+shift': {
+                        subtitle: 'Reprocess audio',
                         variables: {
-                            theAction: "processItem",
+                            theAction: 'processItem',
                             theUrl: item.recPath,
                         },
                     },
-                    "cmd + alt": {
-                        subtitle: "Copy system, voice & AI",
+                    'cmd + alt': {
+                        subtitle: 'Copy system, voice & AI',
                         variables: {
-                            theAction: "copyLongChat",
+                            theAction: 'copyLongChat',
                             theUrl: item.jsonPath,
                         },
                     },
-                    ...(item.llmResult !== ""
+                    ...(item.llmResult !== ''
                         ? {
                               alt: {
-                                  subtitle: "Copy voice & AI",
+                                  subtitle: 'Copy voice & AI',
                                   variables: {
-                                      theAction: "copyChat",
+                                      theAction: 'copyChat',
                                       theUrl: item.jsonPath,
                                   },
                               },
